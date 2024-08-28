@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="mdtReportMapper">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="horizontalVelocity" minOccurs="0" type="HorizontalVelocityMapper"/>
+                <xs:element name="ellipsoidPointWithUncertaintyEllipse" minOccurs="0" type="EllipsoidPointWithUncertaintyEllipseMapper"/>
+                <xs:element name="ellipsoid-PointWithUncertaintyCircle" minOccurs="0" type="EllipsoidPointWithUncertaintyCircleMapper"/>
+                <xs:element name="ellipsoidPointWithAltitudeAndUncertaintyEllipsoid" minOccurs="0" type="EllipsoidPointWithAltitudeAndUncertaintyEllipsoidMapper"/>
+                <xs:element name="ellipsoidPointWithAltitude" minOccurs="0" type="EllipsoidPointWithAltitudeMapper"/>
+                <xs:element name="ellipsoid-Point" minOccurs="0" type="EllipsoidPointMapper"/>
+                <xs:element name="ellipsoidArc" minOccurs="0" type="EllipsoidArcMapper"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="HorizontalVelocityMapper">
+        <xs:sequence>
+            <xs:element name="bearing">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedShort">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="359"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="horizontalSpeed">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedShort">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="2047"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EllipsoidPointWithUncertaintyEllipseMapper">
+        <xs:sequence>
+            <xs:element name="latitudeSign">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="north"/>
+                        <xs:enumeration value="south"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLatitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedInt">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLongitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="-8388608"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="uncertaintySemiMajor">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="127"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="uncertaintySemiMinor">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="127"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="orientationMajorAxis">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="179"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="confidence">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EllipsoidPointWithUncertaintyCircleMapper">
+        <xs:sequence>
+            <xs:element name="latitudeSign">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="north"/>
+                        <xs:enumeration value="south"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLatitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedInt">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLongitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="-8388608"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="uncertainty">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="127"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EllipsoidPointWithAltitudeAndUncertaintyEllipsoidMapper">
+        <xs:sequence>
+            <xs:element name="latitudeSign">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="north"/>
+                        <xs:enumeration value="south"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLatitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedInt">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLongitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="-8388608"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="altitudeDirection">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="height"/>
+                        <xs:enumeration value="depth"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="altitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedShort">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="32767"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="uncertaintySemiMajor">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="127"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="uncertaintySemiMinor">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="127"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="orientationMajorAxis">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="179"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="uncertaintyAltitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="127"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="confidence">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EllipsoidPointWithAltitudeMapper">
+        <xs:sequence>
+            <xs:element name="latitudeSign">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="north"/>
+                        <xs:enumeration value="south"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLatitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedInt">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLongitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="-8388608"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="altitudeDirection">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="height"/>
+                        <xs:enumeration value="depth"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="altitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedShort">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="32767"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EllipsoidPointMapper">
+        <xs:sequence>
+            <xs:element name="latitudeSign">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="north"/>
+                        <xs:enumeration value="south"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLatitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedInt">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLongitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="-8388608"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EllipsoidArcMapper">
+        <xs:sequence>
+            <xs:element name="latitudeSign">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="north"/>
+                        <xs:enumeration value="south"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLatitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedInt">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="degreesLongitude">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="-8388608"/>
+                        <xs:maxInclusive value="8388607"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="innerRadius">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedShort"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="uncertaintyRadius">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="127"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="offsetAngle">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="179"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="includedAngle">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="179"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="confidence">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

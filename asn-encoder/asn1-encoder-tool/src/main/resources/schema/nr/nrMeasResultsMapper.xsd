@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:asn1="http://www.obj-sys.com/v1.0/XMLSchema" elementFormDefault="qualified">
+	<xsd:import namespace="http://www.obj-sys.com/v1.0/XMLSchema" schemaLocation="http://www.obj-sys.com/v1.0/XMLSchema/asn1.xsd" />
+
+	<xsd:element name="nrMeasResultsMapper">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="measId" type="MeasIdMapper" />
+				<xsd:element name="measResultServingMOList" type="MeasResultServMOListMapper" />
+				<xsd:element name="measResultNeighCells" minOccurs="0">
+					<xsd:complexType>
+						<xsd:choice>
+							<xsd:element name="measResultListNR" type="MeasResultListNRMapper" />
+							<xsd:element name="measResultListEUTRA" type="MeasResultListEUTRAMapper" />
+						</xsd:choice>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="MeasurementReportMapper">
+		<xsd:sequence>
+			<xsd:element name="criticalExtensions">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="measurementReport" type="MeasurementReport-IEsMapper" />
+						<xsd:element name="criticalExtensionsFuture">
+							<xsd:complexType>
+								<xsd:sequence>
+									<!-- empty sequence type -->
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultServFreqListNR-SCGMapper">
+		<xsd:sequence maxOccurs="32" minOccurs="1">
+			<xsd:element name="MeasResult2NR" type="MeasResult2NRMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UL-PDCP-DelayValueResult-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="drb-Id-r16" type="DRB-IdentityMapper" />
+			<xsd:element name="averageDelay-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:unsignedShort">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="10000" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ResultsPerCSI-RS-IndexMapper">
+		<xsd:sequence>
+			<xsd:element name="csi-RS-Index" type="CSI-RS-IndexMapper" />
+			<xsd:element minOccurs="0" name="csi-RS-Results" type="MeasQuantityResultsMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CAG-IdentityInfo-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="cag-Identity-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="asn1:BitString">
+						<xsd:length value="32" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="manualCAGselectionAllowed-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:token">
+						<xsd:enumeration value="true" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultListSRS-RSRP-r16Mapper">
+		<xsd:sequence maxOccurs="8" minOccurs="1">
+			<xsd:element name="MeasResultSRS-RSRP-r16" type="MeasResultSRS-RSRP-r16Mapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ResultsPerSSB-IndexMapper">
+		<xsd:sequence>
+			<xsd:element name="ssb-Index" type="SSB-IndexMapper" />
+			<xsd:element minOccurs="0" name="ssb-Results" type="MeasQuantityResultsMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LocationInfo-r16Mapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="commonLocationInfo-r16" type="CommonLocationInfo-r16Mapper" />
+			<xsd:element minOccurs="0" name="bt-LocationInfo-r16" type="LogMeasResultListBT-r16Mapper" />
+			<xsd:element minOccurs="0" name="wlan-LocationInfo-r16" type="LogMeasResultListWLAN-r16Mapper" />
+			<xsd:element minOccurs="0" name="sensor-LocationInfo-r16" type="Sensor-LocationInfo-r16Mapper" />
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UL-PDCP-DelayValueResultList-r16Mapper">
+		<xsd:sequence maxOccurs="29" minOccurs="1">
+			<xsd:element name="UL-PDCP-DelayValueResult-r16" type="UL-PDCP-DelayValueResult-r16Mapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PLMN-IdentityMapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="mcc" type="MCCMapper" />
+			<xsd:element name="mnc" type="MNCMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CellAccessRelatedInfo-EUTRA-5GCMapper">
+		<xsd:sequence>
+			<xsd:element name="plmn-IdentityList-eutra-5gc" type="PLMN-IdentityList-EUTRA-5GCMapper" />
+			<xsd:element name="trackingAreaCode-eutra-5gc" type="TrackingAreaCodeMapper" />
+			<xsd:element minOccurs="0" name="ranac-5gc" type="RAN-AreaCodeMapper" />
+			<xsd:element name="cellIdentity-eutra-5gc" type="CellIdentity-EUTRA-5GCMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultListNRMapper">
+		<xsd:sequence maxOccurs="8" minOccurs="1">
+			<xsd:element name="MeasResultNR" type="MeasResultNRMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WLAN-Identifiers-r16Mapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ssid-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:hexBinary">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="32" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="bssid-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:hexBinary">
+						<xsd:length value="6" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="hessid-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:hexBinary">
+						<xsd:length value="6" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasQuantityResultsEUTRAMapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="rsrp" type="RSRP-RangeEUTRAMapper" />
+			<xsd:element minOccurs="0" name="rsrq" type="RSRQ-RangeEUTRAMapper" />
+			<xsd:element minOccurs="0" name="sinr" type="SINR-RangeEUTRAMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultServMOListMapper">
+		<xsd:sequence maxOccurs="32" minOccurs="1">
+			<xsd:element name="MeasResultServMO" type="MeasResultServMOMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResult2EUTRAMapper">
+		<xsd:sequence>
+			<xsd:element name="carrierFreq" type="ARFCN-ValueEUTRAMapper" />
+			<xsd:element minOccurs="0" name="measResultServingCell" type="MeasResultEUTRAMapper" />
+			<xsd:element minOccurs="0" name="measResultBestNeighCell" type="MeasResultEUTRAMapper" />
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultCellSFTD-NRMapper">
+		<xsd:sequence>
+			<xsd:element name="physCellId" type="PhysCellIdMapper" />
+			<xsd:element name="sfn-OffsetResult">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:unsignedShort">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="1023" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="frameBoundaryOffsetResult">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:short">
+						<xsd:minInclusive value="-30720" />
+						<xsd:maxInclusive value="30719" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="rsrp-Result" type="RSRP-RangeMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PLMN-IdentityInfoListMapper">
+		<xsd:sequence maxOccurs="12" minOccurs="1">
+			<xsd:element name="PLMN-IdentityInfo" type="PLMN-IdentityInfoMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultUTRA-FDD-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="physCellId-r16" type="PhysCellIdUTRA-FDD-r16Mapper" />
+			<xsd:element name="measResult-r16">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" name="utra-FDD-RSCP-r16">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:byte">
+									<xsd:minInclusive value="-5" />
+									<xsd:maxInclusive value="91" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element minOccurs="0" name="utra-FDD-EcN0-r16">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:unsignedByte">
+									<xsd:minInclusive value="0" />
+									<xsd:maxInclusive value="49" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PLMN-IdentityList-EUTRA-5GCMapper">
+		<xsd:sequence maxOccurs="12" minOccurs="1">
+			<xsd:element name="PLMN-Identity-EUTRA-5GC" type="PLMN-Identity-EUTRA-5GCMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PLMN-IdentityInfoMapper">
+		<xsd:sequence>
+			<xsd:element name="plmn-IdentityList">
+				<xsd:complexType>
+					<xsd:sequence maxOccurs="12" minOccurs="1">
+						<xsd:element name="PLMN-Identity" type="PLMN-IdentityMapper" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="trackingAreaCode" type="TrackingAreaCodeMapper" />
+			<xsd:element minOccurs="0" name="ranac" type="RAN-AreaCodeMapper" />
+			<xsd:element name="cellIdentity" type="CellIdentityMapper" />
+			<xsd:element name="cellReservedForOperatorUse">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:token">
+						<xsd:enumeration value="reserved" />
+						<xsd:enumeration value="notReserved" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="iab-Support-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:token">
+						<xsd:enumeration value="true" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultSFTD-EUTRAMapper">
+		<xsd:sequence>
+			<xsd:element name="eutra-PhysCellId" type="EUTRA-PhysCellIdMapper" />
+			<xsd:element name="sfn-OffsetResult">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:unsignedShort">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="1023" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="frameBoundaryOffsetResult">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:short">
+						<xsd:minInclusive value="-30720" />
+						<xsd:maxInclusive value="30719" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="rsrp-Result" type="RSRP-RangeMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ResultsPerCSI-RS-IndexListMapper">
+		<xsd:sequence maxOccurs="64" minOccurs="1">
+			<xsd:element name="ResultsPerCSI-RS-Index" type="ResultsPerCSI-RS-IndexMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PLMN-Identity-EUTRA-5GCMapper">
+		<xsd:choice>
+			<xsd:element name="plmn-Identity-EUTRA-5GC" type="PLMN-IdentityMapper" />
+			<xsd:element name="plmn-index">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:unsignedByte">
+						<xsd:minInclusive value="1" />
+						<xsd:maxInclusive value="12" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultCellListSFTD-NRMapper">
+		<xsd:sequence maxOccurs="3" minOccurs="1">
+			<xsd:element name="MeasResultCellSFTD-NR" type="MeasResultCellSFTD-NRMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultCBR-NR-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="sl-poolReportIdentity-r16" type="SL-ResourcePoolID-r16Mapper" />
+			<xsd:element name="sl-CBR-ResultsNR-r16" type="SL-CBR-r16Mapper" />
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NPN-IdentityInfoList-r16Mapper">
+		<xsd:sequence maxOccurs="12" minOccurs="1">
+			<xsd:element name="NPN-IdentityInfo-r16" type="NPN-IdentityInfo-r16Mapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LogMeasResultListBT-r16Mapper">
+		<xsd:sequence maxOccurs="32" minOccurs="1">
+			<xsd:element name="LogMeasResultBT-r16" type="LogMeasResultBT-r16Mapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultNRMapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="physCellId" type="PhysCellIdMapper" />
+			<xsd:element name="measResult">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="cellResults">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element minOccurs="0" name="resultsSSB-Cell" type="MeasQuantityResultsMapper" />
+									<xsd:element minOccurs="0" name="resultsCSI-RS-Cell" type="MeasQuantityResultsMapper" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element minOccurs="0" name="rsIndexResults">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element minOccurs="0" name="resultsSSB-Indexes" type="ResultsPerSSB-IndexListMapper" />
+									<xsd:element minOccurs="0" name="resultsCSI-RS-Indexes" type="ResultsPerCSI-RS-IndexListMapper" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="cgi-Info" type="CGI-InfoNRMapper" />
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultServMOMapper">
+		<xsd:sequence>
+			<xsd:element name="servCellId" type="ServCellIndexMapper" />
+			<xsd:element name="measResultServingCell" type="MeasResultNRMapper" />
+			<xsd:element minOccurs="0" name="measResultBestNeighCell" type="MeasResultNRMapper" />
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CGI-InfoNRMapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="plmn-IdentityInfoList" type="PLMN-IdentityInfoListMapper" />
+			<xsd:element minOccurs="0" name="frequencyBandList" type="MultiFrequencyBandListNRMapper" />
+			<xsd:element minOccurs="0" name="noSIB1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ssb-SubcarrierOffset">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:unsignedByte">
+									<xsd:minInclusive value="0" />
+									<xsd:maxInclusive value="15" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="pdcch-ConfigSIB1" type="PDCCH-ConfigSIB1Mapper" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="npn-IdentityInfoList-r16" type="NPN-IdentityInfoList-r16Mapper" />
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CellAccessRelatedInfo-EUTRA-EPCMapper">
+		<xsd:sequence>
+			<xsd:element name="plmn-IdentityList-eutra-epc" type="PLMN-IdentityList-EUTRA-EPCMapper" />
+			<xsd:element name="trackingAreaCode-eutra-epc">
+				<xsd:simpleType>
+					<xsd:restriction base="asn1:BitString">
+						<xsd:length value="16" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="cellIdentity-eutra-epc">
+				<xsd:simpleType>
+					<xsd:restriction base="asn1:BitString">
+						<xsd:length value="28" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CellIdentity-EUTRA-5GCMapper">
+		<xsd:choice>
+			<xsd:element name="cellIdentity-EUTRA">
+				<xsd:simpleType>
+					<xsd:restriction base="asn1:BitString">
+						<xsd:length value="28" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="cellId-index">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:unsignedByte">
+						<xsd:minInclusive value="1" />
+						<xsd:maxInclusive value="12" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultCLI-r16Mapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="measResultListSRS-RSRP-r16" type="MeasResultListSRS-RSRP-r16Mapper" />
+			<xsd:element minOccurs="0" name="measResultListCLI-RSSI-r16" type="MeasResultListCLI-RSSI-r16Mapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NPN-IdentityInfo-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="npn-IdentityList-r16">
+				<xsd:complexType>
+					<xsd:sequence maxOccurs="12" minOccurs="1">
+						<xsd:element name="NPN-Identity-r16" type="NPN-Identity-r16Mapper" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="trackingAreaCode-r16" type="TrackingAreaCodeMapper" />
+			<xsd:element minOccurs="0" name="ranac-r16" type="RAN-AreaCodeMapper" />
+			<xsd:element name="cellIdentity-r16" type="CellIdentityMapper" />
+			<xsd:element name="cellReservedForOperatorUse-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:token">
+						<xsd:enumeration value="reserved" />
+						<xsd:enumeration value="notReserved" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="iab-Support-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:token">
+						<xsd:enumeration value="true" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NPN-Identity-r16Mapper">
+		<xsd:choice>
+			<xsd:element name="pni-npn-r16">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="plmn-Identity-r16" type="PLMN-IdentityMapper" />
+						<xsd:element name="cag-IdentityList-r16">
+							<xsd:complexType>
+								<xsd:sequence maxOccurs="12" minOccurs="1">
+									<xsd:element name="CAG-IdentityInfo-r16" type="CAG-IdentityInfo-r16Mapper" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="snpn-r16">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="plmn-Identity-r16" type="PLMN-IdentityMapper" />
+						<xsd:element name="nid-List-r16">
+							<xsd:complexType>
+								<xsd:sequence maxOccurs="12" minOccurs="1">
+									<xsd:element name="NID-r16" type="NID-r16Mapper" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="WLAN-RTT-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="rttValue-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:unsignedInt">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="16777215" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="rttUnits-r16">
+				<xsd:simpleType>
+					<xsd:union memberTypes="xsd:token">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:token">
+								<xsd:enumeration value="microseconds" />
+								<xsd:enumeration value="hundredsofnanoseconds" />
+								<xsd:enumeration value="tensofnanoseconds" />
+								<xsd:enumeration value="nanoseconds" />
+								<xsd:enumeration value="tenthsofnanoseconds" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:union>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="rttAccuracy-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:unsignedByte" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LogMeasResultBT-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="bt-Addr-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="asn1:BitString">
+						<xsd:length value="48" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="rssi-BT-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:byte" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultCLI-RSSI-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="rssi-ResourceId-r16" type="RSSI-ResourceId-r16Mapper" />
+			<xsd:element name="cli-RSSI-Result-r16" type="CLI-RSSI-Range-r16Mapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultSRS-RSRP-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="srs-ResourceId-r16" type="SRS-ResourceIdMapper" />
+			<xsd:element name="srs-RSRP-Result-r16" type="SRS-RSRP-Range-r16Mapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResult2NRMapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ssbFrequency" type="ARFCN-ValueNRMapper" />
+			<xsd:element minOccurs="0" name="refFreqCSI-RS" type="ARFCN-ValueNRMapper" />
+			<xsd:element minOccurs="0" name="measResultServingCell" type="MeasResultNRMapper" />
+			<xsd:element minOccurs="0" name="measResultNeighCellListNR" type="MeasResultListNRMapper" />
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PLMN-IdentityList-EUTRA-EPCMapper">
+		<xsd:sequence maxOccurs="12" minOccurs="1">
+			<xsd:element name="PLMN-Identity" type="PLMN-IdentityMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasurementReport-IEsMapper">
+		<xsd:sequence>
+			<xsd:element name="measResults" type="MeasResultsMapper" />
+			<xsd:element minOccurs="0" name="lateNonCriticalExtension" type="xsd:hexBinary" />
+			<xsd:element minOccurs="0" name="nonCriticalExtension">
+				<xsd:complexType>
+					<xsd:sequence>
+						<!-- empty sequence type -->
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Sensor-LocationInfo-r16Mapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="sensor-MeasurementInformation-r16" type="xsd:hexBinary" />
+			<xsd:element minOccurs="0" name="sensor-MotionInformation-r16" type="xsd:hexBinary" />
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultsMapper">
+		<xsd:sequence>
+			<xsd:element name="measId" type="MeasIdMapper" />
+			<xsd:element name="measResultServingMOList" type="MeasResultServMOListMapper" />
+			<xsd:element minOccurs="0" name="measResultNeighCells">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="measResultListNR" type="MeasResultListNRMapper" />
+						<xsd:element name="measResultListEUTRA" type="MeasResultListEUTRAMapper" />
+						<xsd:element name="measResultListUTRA-FDD-r16" type="MeasResultListUTRA-FDD-r16Mapper" />
+						<xsd:any namespace="##other" processContents="lax" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="measResultServFreqListEUTRA-SCG" type="MeasResultServFreqListEUTRA-SCGMapper" />
+			<xsd:element minOccurs="0" name="measResultServFreqListNR-SCG" type="MeasResultServFreqListNR-SCGMapper" />
+			<xsd:element minOccurs="0" name="measResultSFTD-EUTRA" type="MeasResultSFTD-EUTRAMapper" />
+			<xsd:element minOccurs="0" name="measResultSFTD-NR" type="MeasResultCellSFTD-NRMapper" />
+			<xsd:element minOccurs="0" name="measResultCellListSFTD-NR" type="MeasResultCellListSFTD-NRMapper" />
+			<xsd:element minOccurs="0" name="measResultForRSSI-r16" type="MeasResultForRSSI-r16Mapper" />
+			<xsd:element minOccurs="0" name="locationInfo-r16" type="LocationInfo-r16Mapper" />
+			<xsd:element minOccurs="0" name="ul-PDCP-DelayValueResultList-r16" type="UL-PDCP-DelayValueResultList-r16Mapper" />
+			<xsd:element minOccurs="0" name="measResultsSL-r16" type="MeasResultsSL-r16Mapper" />
+			<xsd:element minOccurs="0" name="measResultCLI-r16" type="MeasResultCLI-r16Mapper" />
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultServFreqListEUTRA-SCGMapper">
+		<xsd:sequence maxOccurs="32" minOccurs="1">
+			<xsd:element name="MeasResult2EUTRA" type="MeasResult2EUTRAMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PDCCH-ConfigSIB1Mapper">
+		<xsd:sequence>
+			<xsd:element name="controlResourceSetZero" type="ControlResourceSetZeroMapper" />
+			<xsd:element name="searchSpaceZero" type="SearchSpaceZeroMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ResultsPerSSB-IndexListMapper">
+		<xsd:sequence maxOccurs="64" minOccurs="1">
+			<xsd:element name="ResultsPerSSB-Index" type="ResultsPerSSB-IndexMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LogMeasResultListWLAN-r16Mapper">
+		<xsd:sequence maxOccurs="32" minOccurs="1">
+			<xsd:element name="LogMeasResultWLAN-r16" type="LogMeasResultWLAN-r16Mapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LogMeasResultWLAN-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="wlan-Identifiers-r16" type="WLAN-Identifiers-r16Mapper" />
+			<xsd:element minOccurs="0" name="rssiWLAN-r16" type="WLAN-RSSI-Range-r16Mapper" />
+			<xsd:element minOccurs="0" name="rtt-WLAN-r16" type="WLAN-RTT-r16Mapper" />
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultListEUTRAMapper">
+		<xsd:sequence maxOccurs="8" minOccurs="1">
+			<xsd:element name="MeasResultEUTRA" type="MeasResultEUTRAMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CGI-InfoEUTRAMapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="cgi-info-EPC">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="cgi-info-EPC-legacy" type="CellAccessRelatedInfo-EUTRA-EPCMapper" />
+						<xsd:element minOccurs="0" name="cgi-info-EPC-list">
+							<xsd:complexType>
+								<xsd:sequence maxOccurs="12" minOccurs="1">
+									<xsd:element name="CellAccessRelatedInfo-EUTRA-EPC" type="CellAccessRelatedInfo-EUTRA-EPCMapper" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="cgi-info-5GC">
+				<xsd:complexType>
+					<xsd:sequence maxOccurs="12" minOccurs="1">
+						<xsd:element name="CellAccessRelatedInfo-EUTRA-5GC" type="CellAccessRelatedInfo-EUTRA-5GCMapper" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="freqBandIndicator" type="FreqBandIndicatorEUTRAMapper" />
+			<xsd:element minOccurs="0" name="multiBandInfoList" type="MultiBandInfoListEUTRAMapper" />
+			<xsd:element minOccurs="0" name="freqBandIndicatorPriority">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:token">
+						<xsd:enumeration value="true" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultEUTRAMapper">
+		<xsd:sequence>
+			<xsd:element name="eutra-PhysCellId" type="PhysCellIdMapper" />
+			<xsd:element name="measResult" type="MeasQuantityResultsEUTRAMapper" />
+			<xsd:element minOccurs="0" name="cgi-Info" type="CGI-InfoEUTRAMapper" />
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultListUTRA-FDD-r16Mapper">
+		<xsd:sequence maxOccurs="8" minOccurs="1">
+			<xsd:element name="MeasResultUTRA-FDD-r16" type="MeasResultUTRA-FDD-r16Mapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultListCLI-RSSI-r16Mapper">
+		<xsd:sequence maxOccurs="8" minOccurs="1">
+			<xsd:element name="MeasResultCLI-RSSI-r16" type="MeasResultCLI-RSSI-r16Mapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultNR-SL-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="measResultListCBR-NR-r16">
+				<xsd:complexType>
+					<xsd:sequence maxOccurs="8" minOccurs="1">
+						<xsd:element name="MeasResultCBR-NR-r16" type="MeasResultCBR-NR-r16Mapper" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultsSL-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="measResultsListSL-r16">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="measResultNR-SL-r16" type="MeasResultNR-SL-r16Mapper" />
+						<xsd:any namespace="##other" processContents="lax" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CommonLocationInfo-r16Mapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="gnss-TOD-msec-r16" type="xsd:hexBinary" />
+			<xsd:element minOccurs="0" name="locationTimestamp-r16" type="xsd:hexBinary" />
+			<xsd:element minOccurs="0" name="locationCoordinate-r16" type="xsd:hexBinary" />
+			<xsd:element minOccurs="0" name="locationError-r16" type="xsd:hexBinary" />
+			<xsd:element minOccurs="0" name="locationSource-r16" type="xsd:hexBinary" />
+			<xsd:element minOccurs="0" name="velocityEstimate-r16" type="xsd:hexBinary" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasResultForRSSI-r16Mapper">
+		<xsd:sequence>
+			<xsd:element name="rssi-Result-r16" type="RSSI-Range-r16Mapper" />
+			<xsd:element name="channelOccupancy-r16">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:unsignedByte">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="100" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MeasQuantityResultsMapper">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="rsrp" type="RSRP-RangeMapper" />
+			<xsd:element minOccurs="0" name="rsrq" type="RSRQ-RangeMapper" />
+			<xsd:element minOccurs="0" name="sinr" type="SINR-RangeMapper" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="ARFCN-ValueEUTRAMapper">
+		<xsd:restriction base="xsd:unsignedInt">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="262143" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RSRP-RangeEUTRAMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="97" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SL-ResourcePoolID-r16Mapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="1" />
+			<xsd:maxInclusive value="16" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RSRQ-RangeEUTRAMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="34" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DRB-IdentityMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="1" />
+			<xsd:maxInclusive value="32" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CLI-RSSI-Range-r16Mapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="76" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ServCellIndexMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="31" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PhysCellIdMapper">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="1007" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SINR-RangeEUTRAMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="127" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SRS-RSRP-Range-r16Mapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="98" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RSSI-ResourceId-r16Mapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="63" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NID-r16Mapper">
+		<xsd:restriction base="asn1:BitString">
+			<xsd:length value="44" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MNCMapper">
+		<xsd:restriction>
+			<xsd:simpleType>
+				<xsd:list itemType="MCC-MNC-Digit" />
+			</xsd:simpleType>
+			<xsd:minLength value="2" />
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MCC-MNC-Digit">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="9" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="WLAN-RSSI-Range-r16Mapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="141" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FreqBandIndicatorEUTRAMapper">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:minInclusive value="1" />
+			<xsd:maxInclusive value="256" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SINR-RangeMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="127" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ARFCN-ValueNRMapper">
+		<xsd:restriction base="xsd:unsignedInt">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="3279165" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CellIdentityMapper">
+		<xsd:restriction base="asn1:BitString">
+			<xsd:length value="36" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RSRP-RangeMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="127" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MultiFrequencyBandListNRMapper">
+		<xsd:restriction>
+			<xsd:simpleType>
+				<xsd:list itemType="FreqBandIndicatorNR" />
+			</xsd:simpleType>
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="8" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FreqBandIndicatorNR">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:minInclusive value="1" />
+			<xsd:maxInclusive value="1024" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MCCMapper">
+		<xsd:restriction>
+			<xsd:simpleType>
+				<xsd:list itemType="MCC-MNC-Digit" />
+			</xsd:simpleType>
+			<xsd:length value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RSRQ-RangeMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="127" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MeasIdMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="1" />
+			<xsd:maxInclusive value="64" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SSB-IndexMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="63" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MultiBandInfoListEUTRAMapper">
+		<xsd:restriction>
+			<xsd:simpleType>
+				<xsd:list itemType="FreqBandIndicatorEUTRA" />
+			</xsd:simpleType>
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="8" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FreqBandIndicatorEUTRA">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:minInclusive value="1" />
+			<xsd:maxInclusive value="256" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SL-CBR-r16Mapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="100" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RSSI-Range-r16Mapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="76" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SearchSpaceZeroMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="15" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RAN-AreaCodeMapper">
+		<xsd:restriction base="xsd:unsignedByte" />
+	</xsd:simpleType>
+	<xsd:simpleType name="EUTRA-PhysCellIdMapper">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="503" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PhysCellIdUTRA-FDD-r16Mapper">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="511" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ControlResourceSetZeroMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="15" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SRS-ResourceIdMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="63" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CSI-RS-IndexMapper">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="95" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TrackingAreaCodeMapper">
+		<xsd:restriction base="asn1:BitString">
+			<xsd:length value="24" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="commonFieldMapper.xsd"/>
+    <!-- PDU definition -->
+    <xs:element name="x2apPduMapper">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="handoverRequest" type="X2HandoverRequestMapper"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="X2HandoverRequestMapper">
+        <xs:sequence>
+            <xs:element name="protocolIEs" type="X2ProtocolIE-ContainerMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="X2ProtocolIE-ContainerMapper">
+        <xs:sequence minOccurs="0" maxOccurs="65535">
+            <xs:element name="protocolIE-Field" type="X2ProtocolIE-FieldMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="X2ProtocolIE-FieldMapper">
+        <xs:sequence>
+            <xs:element name="id" type="ProtocolIE-IDMapper"/>
+            <xs:element name="criticality" type="CriticalityMapper"/>
+            <xs:element name="value" type="X2OpenType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="X2OpenType">
+        <xs:choice>
+            <xs:element name="ueContextInformation" type="UE-ContextInformationMapper"/>
+            <xs:element name="e-RABs-ToBeSetup-Item" type="X2E-RABs-ToBeSetup-ItemMapper"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="UE-ContextInformationMapper">
+        <xs:sequence>
+            <xs:element name="mME-UE-S1AP-ID" type="UE-S1AP-IDMapper"/>
+            <xs:element name="uESecurityCapabilities" type="UESecurityCapabilitiesMapper"/>
+            <xs:element name="aS-SecurityInformation" type="AS-SecurityInformationMapper"/>
+            <xs:element name="uEaggregateMaximumBitRate" type="UEAggregateMaximumBitrateMapper"/>
+            <xs:element name="subscriberProfileIDforRFP" minOccurs="0" type="SubscriberProfileIDforRFPMapper"/>
+            <xs:element name="e-RABs-ToBeSetup-List" type="X2E-RABs-ToBeSetup-ListMapper"/>
+            <xs:element name="rRC-Context" type="RRC-ContextMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="X2E-RABs-ToBeSetup-ListMapper">
+        <xs:sequence minOccurs="1" maxOccurs="256">
+            <xs:element name="ProtocolIE-Single-Container" type="X2ProtocolIE-Single-ContainerMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="X2E-RABs-ToBeSetup-ItemMapper">
+        <xs:sequence>
+            <xs:element name="e-RAB-ID" type="E-RAB-IDMapper"/>
+            <xs:element name="e-RAB-Level-QoS-Parameters" type="E-RABLevelQoSParametersMapper"/>
+            <xs:element name="dL-Forwarding" minOccurs="0" type="DL-ForwardingMapper"/>
+            <xs:element name="uL-GTPtunnelEndpoint" type="GTPtunnelEndpointMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="DL-ForwardingMapper">
+        <xs:union memberTypes="xs:token">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="dL-forwardingProposed"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:complexType name="GTPtunnelEndpointMapper">
+        <xs:sequence>
+            <xs:element name="transportLayerAddress" type="TransportLayerAddressMapper"/>
+            <xs:element name="gTP-TEID" type="GTP-TEIMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="GTP-TEIMapper">
+        <xs:restriction base="xs:hexBinary">
+            <xs:length value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="X2ProtocolIE-Single-ContainerMapper">
+        <xs:complexContent>
+            <xs:extension base="X2ProtocolIE-FieldMapper"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="UESecurityCapabilitiesMapper">
+        <xs:sequence>
+            <xs:element name="encryptionAlgorithms" type="EncryptionAlgorithmsMapper"/>
+            <xs:element name="integrityProtectionAlgorithms" type="IntegrityProtectionAlgorithmsMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AS-SecurityInformationMapper">
+        <xs:sequence>
+            <xs:element name="key-eNodeB-star" type="Key-eNodeB-StarMapper"/>
+            <xs:element name="nextHopChainingCount" type="NextHopChainingCountMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="UE-S1AP-IDMapper">
+        <xs:restriction base="xs:unsignedInt"/>
+    </xs:simpleType>
+    <xs:simpleType name="RRC-ContextMapper">
+        <xs:restriction base="xs:hexBinary"/>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="SubscriberProfileIDforRFPMapper">
+        <xs:restriction base="xs:unsignedShort">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="256"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EncryptionAlgorithmsMapper">
+        <!--BitString -->
+        <xs:restriction base="xs:string">
+            <xs:length value="16"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IntegrityProtectionAlgorithmsMapper">
+        <!--BitString -->
+        <xs:restriction base="xs:string">
+            <xs:length value="16"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Key-eNodeB-StarMapper">
+        <!--BitString -->
+        <xs:restriction base="xs:string">
+            <xs:length value="256"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NextHopChainingCountMapper">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="7"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

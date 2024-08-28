@@ -1,0 +1,10 @@
+#! /bin/bash
+#
+# extract the fields used by the etcm rules to a text file
+# so that they can be used by S345G
+#
+grep -r "pref" etcm/e*.xml | awk -F"[><]" '{print("    " $3 ",")}' | sort -u > etcm_fields.txt
+grep -r "event_param" etcm/f*.xml | awk -F"[\"]" '{print("    " $2 ",")}' | sort -u >> etcm_fields.txt
+
+
+

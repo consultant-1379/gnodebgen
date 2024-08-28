@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="ProtocolIE-IDMapper">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="id_uEaggregateMaximumBitrate"/> <!--66L-->
+            <xs:enumeration value="id_E_RABToBeSetupListHOReq"/> <!--53L-->
+            <xs:enumeration value="id_Source_ToTarget_TransparentContainer"/> <!--104L-->
+            <xs:enumeration value="id_E_RABToBeSetupItemHOReq"/> <!--27L-->
+            <xs:enumeration value="id_UE_ContextInformation"/> <!--14L-->
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="BitRateMapper">
+        <xs:restriction base="xs:unsignedLong">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CriticalityMapper">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="reject"/>
+            <xs:enumeration value="ignore"/>
+            <xs:enumeration value="notify"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="QCIMapper">
+        <xs:restriction base="xs:unsignedByte"/>
+    </xs:simpleType>
+    <xs:simpleType name="PriorityLevelMapper">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="spare"/>
+                    <xs:enumeration value="highest"/>
+                    <xs:enumeration value="lowest"/>
+                    <xs:enumeration value="no-priority"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:unsignedByte">
+                    <xs:minInclusive value="0"/>
+                    <xs:maxInclusive value="15"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="Pre-emptionCapabilityMapper">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="shall-not-trigger-pre-emption"/>
+            <xs:enumeration value="may-trigger-pre-emption"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Pre-emptionVulnerabilityMapper">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="not-pre-emptable"/>
+            <xs:enumeration value="pre-emptable"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="UEAggregateMaximumBitrateMapper">
+        <xs:sequence>
+            <xs:element name="uEaggregateMaximumBitRateDL" type="BitRateMapper"/>
+            <xs:element name="uEaggregateMaximumBitRateUL" type="BitRateMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="TransportLayerAddressMapper">
+        <!-- Bit String-->
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="160"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="GTP-TEIDMapper">
+        <xs:restriction base="xs:hexBinary">
+            <xs:length value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="E-RAB-IDMapper">
+        <xs:restriction base="xs:unsignedInt">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="15"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="E-RABLevelQoSParametersMapper">
+        <xs:sequence>
+            <xs:element name="qCI" type="QCIMapper"/>
+            <xs:element name="allocationRetentionPriority" type="AllocationAndRetentionPriorityMapper"/>
+            <xs:element name="gbrQosInformation" minOccurs="0" type="GBR-QosInformationMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GBR-QosInformationMapper">
+        <xs:sequence>
+            <xs:element name="e-RAB-MaximumBitrateDL" type="BitRateMapper"/>
+            <xs:element name="e-RAB-MaximumBitrateUL" type="BitRateMapper"/>
+            <xs:element name="e-RAB-GuaranteedBitrateDL" type="BitRateMapper"/>
+            <xs:element name="e-RAB-GuaranteedBitrateUL" type="BitRateMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AllocationAndRetentionPriorityMapper">
+        <xs:sequence>
+            <xs:element name="priorityLevel" type="PriorityLevelMapper"/>
+            <xs:element name="pre-emptionCapability" type="Pre-emptionCapabilityMapper"/>
+            <xs:element name="pre-emptionVulnerability" type="Pre-emptionVulnerabilityMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:NrUeCapabilityInformation
+	xmlns:p="http://www.obj-sys.com/NR-RRC-Definitions"
+	xmlns:p1="http://www.obj-sys.com/v1.0/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.obj-sys.com/NR-RRC-Definitions nrUeNRCapability.xsd ">
+	<p:rrc-TransactionIdentifier>2</p:rrc-TransactionIdentifier>
+	<p:criticalExtensions>
+		<p:ueCapabilityInformation>
+			<p:ue-CapabilityRAT-ContainerList>
+				<p:UE-CapabilityRAT-Container>
+					<p:rat-Type>nr</p:rat-Type>
+					<p:ue-CapabilityRAT-Container>0000000000000c004000000802500100c4002029c0</p:ue-CapabilityRAT-Container>
+				</p:UE-CapabilityRAT-Container>
+			</p:ue-CapabilityRAT-ContainerList>
+		</p:ueCapabilityInformation>
+	</p:criticalExtensions>
+</p:NrUeCapabilityInformation>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:nrUeNRCapabilityMapper
+	xmlns:p="http://www.obj-sys.com/NR-RRC-Definitions"
+	xmlns:p1="http://www.obj-sys.com/v1.0/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.obj-sys.com/NR-RRC-Definitions UE-NR-Capability.xsd ">
+	<p:accessStratumRelease>rel15</p:accessStratumRelease>
+	<p:pdcp-Parameters>
+		<p:supportedROHC-Profiles>
+			<p:profile0x0000>false</p:profile0x0000>
+			<p:profile0x0001>false</p:profile0x0001>
+			<p:profile0x0002>false</p:profile0x0002>
+			<p:profile0x0003>false</p:profile0x0003>
+			<p:profile0x0004>false</p:profile0x0004>
+			<p:profile0x0006>false</p:profile0x0006>
+			<p:profile0x0101>false</p:profile0x0101>
+			<p:profile0x0102>false</p:profile0x0102>
+			<p:profile0x0103>false</p:profile0x0103>
+			<p:profile0x0104>false</p:profile0x0104>
+		</p:supportedROHC-Profiles>
+		<p:maxNumberROHC-ContextSessions>cs2</p:maxNumberROHC-ContextSessions>
+	</p:pdcp-Parameters>
+	<p:phy-Parameters>
+	</p:phy-Parameters>
+	<p:rf-Parameters>
+		<p:supportedBandListNR>
+			<p:BandNR>
+				<p:bandNR>1</p:bandNR>
+				<p:ue-PowerClass>pc1</p:ue-PowerClass>
+			</p:BandNR>
+			<p:BandNR>
+				<p:bandNR>10</p:bandNR>
+				<p:ue-PowerClass>pc2</p:ue-PowerClass>
+			</p:BandNR>
+			<p:BandNR>
+				<p:bandNR>25</p:bandNR>
+				<p:ue-PowerClass>pc3</p:ue-PowerClass>
+			</p:BandNR>
+			<p:BandNR>
+				<p:bandNR>42</p:bandNR>
+				<p:ue-PowerClass>pc4</p:ue-PowerClass>
+			</p:BandNR>
+		</p:supportedBandListNR>
+	</p:rf-Parameters>
+</p:nrUeNRCapabilityMapper>

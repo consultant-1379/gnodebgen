@@ -1,0 +1,857 @@
+{
+    "networkElement": "NetworkElement=TOPOLOGY_TEST_2", 
+    "moMap": {
+        "GNBDUFunction": [
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBDUFunction=1", 
+                "attributeMap": {
+                    "gNBId": 2, 
+                    "gNBDUFunctionId": "1", 
+                    "gNBIdLength": 22
+                }, 
+                "moClass": "GNBDUFunction"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBDUFunction=1,NRCellDU=TOPOLOGY_TEST_2-2", 
+                "attributeMap": {
+                    "pLMNIdList": [
+                        {
+                            "mnc": "49", 
+                            "mcc": "128"
+                        }, 
+                        {
+                            "mnc": "50", 
+                            "mcc": "129"
+                        }, 
+                        {
+                            "mnc": "51", 
+                            "mcc": "130"
+                        }
+                    ], 
+                    "nCI": 32770, 
+                    "cellLocalId": 2, 
+                    "nCGI": 882976556597250
+                }, 
+                "moClass": "NRCellDU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBDUFunction=1,NRCellDU=TOPOLOGY_TEST_2-1", 
+                "attributeMap": {
+                    "pLMNIdList": [
+                        {
+                            "mnc": "49", 
+                            "mcc": "128"
+                        }, 
+                        {
+                            "mnc": "50", 
+                            "mcc": "129"
+                        }, 
+                        {
+                            "mnc": "51", 
+                            "mcc": "130"
+                        }
+                    ], 
+                    "nCI": 32769, 
+                    "cellLocalId": 1, 
+                    "nCGI": 882976556597249
+                }, 
+                "moClass": "NRCellDU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBDUFunction=1,NRCellDU=TOPOLOGY_TEST_2-3", 
+                "attributeMap": {
+                    "pLMNIdList": [
+                        {
+                            "mnc": "49", 
+                            "mcc": "128"
+                        }, 
+                        {
+                            "mnc": "50", 
+                            "mcc": "129"
+                        }, 
+                        {
+                            "mnc": "51", 
+                            "mcc": "130"
+                        }
+                    ], 
+                    "nCI": 32771, 
+                    "cellLocalId": 3, 
+                    "nCGI": 882976556597251
+                }, 
+                "moClass": "NRCellDU"
+            }
+        ], 
+        "GNBCUUPFunction": [
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1", 
+                "attributeMap": {
+                    "gNBId": 2, 
+                    "gNBCUUPFunctionId": "1", 
+                    "gNBIdLength": 22
+                }, 
+                "moClass": "GNBCUUPFunction"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,EP_NgU=1", 
+                "attributeMap": {
+                    "eP_NgUId": "1", 
+                    "remoteEndPoint": "2001:1b70:82a1:103::64:21", 
+                    "localEndPoint": "2001:1b70:82a1:103::64:19"
+                }, 
+                "moClass": "EP_NgU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,EP_NgU=2", 
+                "attributeMap": {
+                    "eP_NgUId": "2", 
+                    "remoteEndPoint": "2001:1b70:82a1:103::64:22", 
+                    "localEndPoint": "2001:1b70:82a1:103::64:20"
+                }, 
+                "moClass": "EP_NgU"
+            },
+            {
+                "moFdn":"SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,PpControlTermination=1,PpControlLink=1", 
+                "attributeMap": {
+                    "remoteEndPoint": "128.0.0.3", 
+                    "localEndPoint": "128.0.0.1"
+                }, 
+                "moClass": "PpControlLink"
+            }, 			
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,EP_NgU=3", 
+                "attributeMap": {
+                    "eP_NgUId": "3", 
+                    "remoteEndPoint": "127.0.0.23", 
+                    "localEndPoint": "127.0.0.21"
+                }, 
+                "moClass": "EP_NgU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,EP_NgU=4", 
+                "attributeMap": {
+                    "eP_NgUId": "4", 
+                    "remoteEndPoint": "127.0.0.24", 
+                    "localEndPoint": "127.0.0.22"
+                }, 
+                "moClass": "EP_NgU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,EP_NgU=5", 
+                "attributeMap": {
+                    "eP_NgUId": "5", 
+                    "remoteEndPoint": "127.0.0.25", 
+                    "localEndPoint": "127.0.0.23"
+                }, 
+                "moClass": "EP_NgU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,EP_NgU=6", 
+                "attributeMap": {
+                    "eP_NgUId": "6", 
+                    "remoteEndPoint": "127.0.0.26", 
+                    "localEndPoint": "127.0.0.24"
+                }, 
+                "moClass": "EP_NgU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,RpUserPlaneTermination=1,RpUserPlaneLink=1", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.31", 
+                    "rpUserPlaneLinkId": "1", 
+                    "remoteEndPoint": "127.0.0.33"
+                }, 
+                "moClass": "RpUserPlaneLink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,RpUserPlaneTermination=1,RpUserPlaneLink=2", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.32", 
+                    "rpUserPlaneLinkId": "2", 
+                    "remoteEndPoint": "127.0.0.34"
+                }, 
+                "moClass": "RpUserPlaneLink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,RpUserPlaneTermination=1,RpUserPlaneLink=3", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.33", 
+                    "rpUserPlaneLinkId": "3", 
+                    "remoteEndPoint": "127.0.0.35"
+                }, 
+                "moClass": "RpUserPlaneLink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,RpUserPlaneTermination=1,RpUserPlaneLink=4", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.34", 
+                    "rpUserPlaneLinkId": "4", 
+                    "remoteEndPoint": "127.0.0.36"
+                }, 
+                "moClass": "RpUserPlaneLink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,RpUserPlaneTermination=1,RpUserPlaneLink=5", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.35", 
+                    "rpUserPlaneLinkId": "5", 
+                    "remoteEndPoint": "127.0.0.37"
+                }, 
+                "moClass": "RpUserPlaneLink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,RpUserPlaneTermination=1,RpUserPlaneLink=6", 
+                "attributeMap": {
+                    "localEndPoint": "2001:1b70:82a1:103::64:36", 
+                    "rpUserPlaneLinkId": "6", 
+                    "remoteEndPoint": "2001:1b70:82a1:103::64:38"
+                }, 
+                "moClass": "RpUserPlaneLink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,RpUserPlaneTermination=1,RpUserPlaneLink=7", 
+                "attributeMap": {
+                    "localEndPoint": "2001:1b70:82a1:103::64:37", 
+                    "rpUserPlaneLinkId": "7", 
+                    "remoteEndPoint": "2001:1b70:82a1:103::64:39"
+                }, 
+                "moClass": "RpUserPlaneLink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,RpUserPlaneTermination=1,RpUserPlaneLink=8", 
+                "attributeMap": {
+                    "localEndPoint": "2001:1b70:82a1:103::64:38", 
+                    "rpUserPlaneLinkId": "8", 
+                    "remoteEndPoint": "2001:1b70:82a1:103::64:40"
+                }, 
+                "moClass": "RpUserPlaneLink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=1", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.1", 
+                    "s1ULinkId": "1", 
+                    "remoteEndPoint": "127.0.0.3"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=2", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.2", 
+                    "s1ULinkId": "2", 
+                    "remoteEndPoint": "127.0.0.4"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=3", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.3", 
+                    "s1ULinkId": "3", 
+                    "remoteEndPoint": "127.0.0.5"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=4", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.4", 
+                    "s1ULinkId": "4", 
+                    "remoteEndPoint": "127.0.0.6"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=5", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.5", 
+                    "s1ULinkId": "5", 
+                    "remoteEndPoint": "127.0.0.7"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=6", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.6", 
+                    "s1ULinkId": "6", 
+                    "remoteEndPoint": "127.0.0.8"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=7", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.7", 
+                    "s1ULinkId": "7", 
+                    "remoteEndPoint": "127.0.0.9"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=8", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.8", 
+                    "s1ULinkId": "8", 
+                    "remoteEndPoint": "127.0.0.10"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=9", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.9", 
+                    "s1ULinkId": "9", 
+                    "remoteEndPoint": "127.0.0.11"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=10", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.10", 
+                    "s1ULinkId": "10", 
+                    "remoteEndPoint": "127.0.0.12"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=11", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.11", 
+                    "s1ULinkId": "11", 
+                    "remoteEndPoint": "127.0.0.13"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=12", 
+                "attributeMap": {
+                    "localEndPoint": "127.0.0.12", 
+                    "s1ULinkId": "12", 
+                    "remoteEndPoint": "127.0.0.14"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=13", 
+                "attributeMap": {
+                    "localEndPoint": "2001:1b70:82a1:103::64:13", 
+                    "s1ULinkId": "13", 
+                    "remoteEndPoint": "2001:1b70:82a1:103::64:15"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=14", 
+                "attributeMap": {
+                    "localEndPoint": "2001:1b70:82a1:103::64:14", 
+                    "s1ULinkId": "14", 
+                    "remoteEndPoint": "2001:1b70:82a1:103::64:16"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=15", 
+                "attributeMap": {
+                    "localEndPoint": "2001:1b70:82a1:103::64:15", 
+                    "s1ULinkId": "15", 
+                    "remoteEndPoint": "2001:1b70:82a1:103::64:17"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=16", 
+                "attributeMap": {
+                    "localEndPoint": "2001:1b70:82a1:103::64:16", 
+                    "s1ULinkId": "16", 
+                    "remoteEndPoint": "2001:1b70:82a1:103::64:18"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=17", 
+                "attributeMap": {
+                    "localEndPoint": "2001:1b70:82a1:103::64:17", 
+                    "s1ULinkId": "17", 
+                    "remoteEndPoint": "2001:1b70:82a1:103::64:19"
+                }, 
+                "moClass": "S1ULink"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUUPFunction=1,S1UTermination=1,S1ULink=18", 
+                "attributeMap": {
+                    "localEndPoint": "2001:1b70:82a1:103::64:18", 
+                    "s1ULinkId": "18", 
+                    "remoteEndPoint": "2001:1b70:82a1:103::64:20"
+                }, 
+                "moClass": "S1ULink"
+            }
+        ], 
+        "GNBCUCPFunction": [
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1", 
+                "attributeMap": {
+                    "gNBCUCPFunctionId": "1", 
+                    "gNBId": 2, 
+                    "gNBIdLength": 22
+                }, 
+                "moClass": "GNBCUCPFunction"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2", 
+                "attributeMap": {
+                    "nCI": 32770, 
+                    "cellLocalId": 2
+                }, 
+                "moClass": "NRCellCU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3", 
+                "attributeMap": {
+                    "nCI": 32771, 
+                    "cellLocalId": 3
+                }, 
+                "moClass": "NRCellCU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1", 
+                "attributeMap": {
+                    "nCI": 32769, 
+                    "cellLocalId": 1
+                }, 
+                "moClass": "NRCellCU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,NRCellRelation=129_50_32770", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,NRCellRelation=130_49_32771", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,NRCellRelation=128_51_16385", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,NRCellRelation=129_50_16386", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,NRCellRelation=130_49_16387", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32817", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32818", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32819", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32820", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32821", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32822", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32823", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32824", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32825", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32826", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32827", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32828", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32829", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32830", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-1,EUtranCellRelation=310_410_32831", 
+                "attributeMap": {
+                    "srcnCI": 32769
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,NRCellRelation=128_51_32769", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,NRCellRelation=130_49_32771", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,NRCellRelation=128_51_16385", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,NRCellRelation=129_50_16386", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,NRCellRelation=130_49_16387", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32832", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32833", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32834", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32835", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32836", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32837", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32838", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32839", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32840", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32841", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32842", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32843", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32844", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32845", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-2,EUtranCellRelation=310_410_32846", 
+                "attributeMap": {
+                    "srcnCI": 32770
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,NRCellRelation=128_51_32769", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,NRCellRelation=129_50_32770", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,NRCellRelation=128_51_16385", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,NRCellRelation=129_50_16386", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,NRCellRelation=130_49_16387", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32847", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32848", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32849", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32850", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32851", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32852", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32853", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32854", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32855", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32856", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32857", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32858", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32859", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32860", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2,GNBCUCPFunction=1,NRCellCU=TOPOLOGY_TEST_2-3,EUtranCellRelation=310_410_32861", 
+                "attributeMap": {
+                    "srcnCI": 32771
+                }, 
+                "moClass": "EUtranCellRelation"
+            }
+        ], 
+        "ManagedElement": [
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=TOPOLOGY_TEST_2,ManagedElement=TOPOLOGY_TEST_2", 
+                "attributeMap": {
+                    "swVersion": "CXP9024418/6_R79A10", 
+                    "neTimeZone": "GMT"
+                }, 
+                "moClass": "ManagedElement"
+            }
+        ]
+    }
+}

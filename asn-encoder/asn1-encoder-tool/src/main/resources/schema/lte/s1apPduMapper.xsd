@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="commonFieldMapper.xsd"/>
+    <!-- PDU definition -->
+    <xs:element name="s1apPduMapper">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="handoverRequest" type="HandoverRequestMapper"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="HandoverRequestMapper">
+        <xs:sequence>
+            <xs:element name="protocolIEs" type="ProtocolIE-ContainerMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ProtocolIE-ContainerMapper">
+        <xs:sequence minOccurs="0" maxOccurs="65535">
+            <xs:element name="protocolIE-Field" type="ProtocolIE-FieldMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ProtocolIE-FieldMapper">
+        <xs:sequence>
+            <xs:element name="id" type="ProtocolIE-IDMapper"/>
+            <xs:element name="criticality" type="CriticalityMapper"/>
+            <xs:element name="value" type="OpenType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="OpenType">
+        <xs:choice>
+            <xs:element name="uEAggregateMaximumBitrate" type="UEAggregateMaximumBitrateMapper"/>
+            <xs:element name="e-RABToBeSetupListHOReq" type="E-RABToBeSetupListHOReqMapper"/>
+            <xs:element name="e-RABToBeSetupItemHOReq" type="E-RABToBeSetupItemHOReqMapper"/>
+            <xs:element name="source-ToTarget-TransparentContainer" type="Source-ToTarget-TransparentContainerMapper"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="E-RABToBeSetupItemHOReqMapper">
+        <xs:sequence>
+            <xs:element name="e-RAB-ID" type="E-RAB-IDMapper"/>
+            <xs:element name="transportLayerAddress" type="TransportLayerAddressMapper"/>
+            <xs:element name="gTP-TEID" type="GTP-TEIDMapper"/>
+            <xs:element name="e-RABlevelQosParameters" type="E-RABLevelQoSParametersMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- PDU definition -->
+
+    <xs:simpleType name="Source-ToTarget-TransparentContainerMapper">
+        <xs:restriction base="xs:hexBinary"/>
+    </xs:simpleType>
+
+    <!-- PDU definition value used as Source-ToTarget-TransparentContainer-->
+    <!--    <xs:element name="sourceeNB-ToTargeteNB-TransparentContainer" type="SourceeNB-ToTargeteNB-TransparentContainer"/>
+        <xs:complexType name="SourceeNB-ToTargeteNB-TransparentContainer">
+            <xs:sequence>
+                <xs:element name="rRC-Container" type="RRC-Container"/>
+                <xs:element name="e-RABInformationList" minOccurs="0" type="E-RABInformationList"/>
+                <xs:element name="targetCell-ID" type="EUTRAN-CGI"/>
+                <xs:element name="subscriberProfileIDforRFP" minOccurs="0" type="SubscriberProfileIDforRFP"/>
+                <xs:element name="uE-HistoryInformation" type="UE-HistoryInformation"/>
+            </xs:sequence>
+        </xs:complexType>-->
+
+    <xs:complexType name="E-RABToBeSetupListHOReqMapper">
+        <xs:complexContent>
+            <xs:extension base="E-RAB-IE-ContainerListMapper"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="E-RAB-IE-ContainerListMapper">
+        <xs:sequence minOccurs="1" maxOccurs="256">
+            <xs:element name="ProtocolIE-SingleContainer" type="ProtocolIE-SingleContainerMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ProtocolIE-SingleContainerMapper">
+        <xs:complexContent>
+            <xs:extension base="ProtocolIE-FieldMapper"/>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

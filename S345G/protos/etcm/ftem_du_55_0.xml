@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ # Copyright Ericsson AB
+ #
+ # The copyright to the computer programs herein is the property of
+ # Ericsson AB. The programs may be used and/or copied only with the
+ # written permission from Ericsson AB or in accordance with the terms
+ # conditions stipulated in the agreement/contract under which the
+ # programs have been supplied.
+ #
+ -->
+
+<flex xmlns="urn:com:ericsson:schema:xml:oss:ftem">
+    <date>2023-03-30</date>
+    <major_version>55</major_version>
+    <correction_version>0</correction_version>
+    <managed_function>DU</managed_function>
+    <filters>
+        <filter name="Qos">
+            <description>QoS value of bearers for which latency and contention delay values are measured. Can be either QCI value (NSA) or 5QI value (SA).</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="QosType">
+            <description>Type of QoS value. Can be either QCI (NSA) or 5QI (SA).</description>
+            <enumeration>
+                <member name="NR_TYPE_NO_VALUE">0</member>
+                <member name="NR_TYPE_NSA">1</member>
+                <member name="NR_TYPE_SA">2</member>
+            </enumeration>
+        </filter>
+        <filter name="UePowerClass">
+            <description>UE power class value.</description>
+            <enumeration>
+                <member name="UE_POWER_CLASS_NO_VALUE">0</member>
+                <member name="UE_POWER_CLASS_1">1</member>
+                <member name="UE_POWER_CLASS_1_5">2</member>
+                <member name="UE_POWER_CLASS_2">3</member>
+                <member name="UE_POWER_CLASS_3">4</member>
+                <member name="UE_POWER_CLASS_4">5</member>
+            </enumeration>
+        </filter>
+        <filter name="PrefUeGrpId">
+            <description>Identifier of preference UE group used to determine some UE property that requires specific configuration data.</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="UeGrpId">
+            <description>Identifier of UE group used to determine UE configuration data.</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="Snssai">
+            <description>S-NSSAI composed of Slice Service Type (SST) and Service Differentiator (SD).</description>
+            <custom/>
+        </filter>
+        <filter name="PlmnId">
+            <description>Identifier of PLMN. Consists of MCC and MNC.</description>
+            <custom/>
+        </filter>
+        <filter name="PartitionId">
+            <description>Identity for observability of resource partition.</description>
+            <range>
+                <min>1</min>
+                <max>13</max>
+            </range>
+        </filter>
+        <filter name="ServiceId">
+            <description>Identity for observability of service within a resource partition.</description>
+            <range>
+                <min>0</min>
+                <max>2</max>
+            </range>
+        </filter>
+        <filter name="UeMobilityGrpId">
+            <description>Identifier of UE mobility group used to determine UE configuration data.</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="UeServiceGrpId">
+            <description>Identifier of UE service group used to determine UE configuration data.</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="UeAdmissionGrpId">
+            <description>Identifier of UE admission group used to determine UE configuration data.</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="EstablishmentCause">
+            <description>Cause for RRC Connection Establishment procedure.</description>
+            <enumeration>
+                <member name="ESTABLISHMENT_CAUSE_NO_VALUE">0</member>
+                <member name="ESTABLISHMENT_CAUSE_EMERGENCY">1</member>
+                <member name="ESTABLISHMENT_CAUSE_HIGH_PRIORITY_ACCESS">2</member>
+                <member name="ESTABLISHMENT_CAUSE_MT_ACCESS">3</member>
+                <member name="ESTABLISHMENT_CAUSE_MO_SIGNALLING">4</member>
+                <member name="ESTABLISHMENT_CAUSE_MO_DATA">5</member>
+                <member name="ESTABLISHMENT_CAUSE_MO_VOICE_CALL">6</member>
+                <member name="ESTABLISHMENT_CAUSE_MO_VIDEO_CALL">7</member>
+                <member name="ESTABLISHMENT_CAUSE_MO_SMS">8</member>
+                <member name="ESTABLISHMENT_CAUSE_MPS_PRIORITY_ACCESS">9</member>
+                <member name="ESTABLISHMENT_CAUSE_MCS_PRIORITY_ACCESS">10</member>
+                <member name="ESTABLISHMENT_CAUSE_PROCEDURE_NOT_APPLICABLE">11</member>
+            </enumeration>
+        </filter>
+        <filter name="ResumeCause">
+            <description>Cause for RRC Connection Resume procedure.</description>
+            <enumeration>
+                <member name="RESUME_CAUSE_NO_VALUE">0</member>
+                <member name="RESUME_CAUSE_EMERGENCY">1</member>
+                <member name="RESUME_CAUSE_HIGH_PRIORITY_ACCESS">2</member>
+                <member name="RESUME_CAUSE_MT_ACCESS">3</member>
+                <member name="RESUME_CAUSE_MO_SIGNALLING">4</member>
+                <member name="RESUME_CAUSE_MO_DATA">5</member>
+                <member name="RESUME_CAUSE_MO_VOICE_CALL">6</member>
+                <member name="RESUME_CAUSE_MO_VIDEO_CALL">7</member>
+                <member name="RESUME_CAUSE_MO_SMS">8</member>
+                <member name="RESUME_CAUSE_MO_RNA_UPDATE">9</member>
+                <member name="RESUME_CAUSE_MPS_PRIORITY_ACCESS">10</member>
+                <member name="RESUME_CAUSE_MCS_PRIORITY_ACCESS">11</member>
+                <member name="RESUME_CAUSE_PROCEDURE_NOT_APPLICABLE">12</member>
+            </enumeration>
+        </filter>
+        <filter name="ReestablishmentCause">
+            <description>Cause for RRC Connection Reestablishment procedure.</description>
+            <enumeration>
+                <member name="REESTABLISHMENT_CAUSE_NO_VALUE">0</member>
+                <member name="REESTABLISHMENT_CAUSE_RECONFIGURATION_FAILURE">1</member>
+                <member name="REESTABLISHMENT_CAUSE_HANDOVER_FAILURE">2</member>
+                <member name="REESTABLISHMENT_CAUSE_OTHER_FAILURE">3</member>
+                <member name="REESTABLISHMENT_CAUSE_PROCEDURE_NOT_APPLICABLE">4</member>
+            </enumeration>
+        </filter>
+    </filters>
+    <events>
+        <event name="DuPerCellQosTrafficRep">
+            <event_filter event_param="qos_value" filter_name="Qos"/>
+            <event_filter event_param="nr_type" filter_name="QosType"/>
+        </event>
+        <event name="DuPerCellpartitionResourceRep">
+            <event_filter event_param="partition_id" filter_name="PartitionId"/>
+            <event_filter event_param="service_id" filter_name="ServiceId"/>
+        </event>
+        <event name="DuPerUeRbTrafficRepAggr10">
+            <event_filter event_param="qos_value" filter_name="Qos"/>
+            <event_filter event_param="nr_type" filter_name="QosType"/>
+            <event_filter event_param="ue_power_class" filter_name="UePowerClass"/>
+            <event_filter event_param="pref_ue_group_id" filter_name="PrefUeGrpId"/>
+            <event_filter event_param="ue_group_id" filter_name="UeGrpId"/>
+            <event_filter event_param="s_nssai" filter_name="Snssai"/>
+            <event_filter event_param="serving_plmn_id" filter_name="PlmnId"/>
+            <event_filter event_param="ue_mobility_group_id" filter_name="UeMobilityGrpId"/>
+            <event_filter event_param="ue_service_group_id" filter_name="UeServiceGrpId"/>
+            <event_filter event_param="ue_admission_group_id" filter_name="UeAdmissionGrpId">
+                <preliminary/>
+            </event_filter>
+        </event>
+        <event name="DuPerUeTrafficRepAggr10">
+            <event_filter event_param="ue_power_class" filter_name="UePowerClass"/>
+            <event_filter event_param="pref_ue_group_id" filter_name="PrefUeGrpId"/>
+            <event_filter event_param="ue_group_id" filter_name="UeGrpId"/>
+            <event_filter event_param="nr_type" filter_name="QosType"/>
+            <event_filter event_param="s_nssai" filter_name="Snssai"/>
+            <event_filter event_param="serving_plmn_id" filter_name="PlmnId"/>
+            <event_filter event_param="ue_mobility_group_id" filter_name="UeMobilityGrpId"/>
+            <event_filter event_param="ue_service_group_id" filter_name="UeServiceGrpId"/>
+            <event_filter event_param="ue_admission_group_id" filter_name="UeAdmissionGrpId">
+                <preliminary/>
+            </event_filter>
+        </event>
+        <event name="DuProcRrcAccess">
+            <event_filter event_param="establishment_cause" filter_name="EstablishmentCause"/>
+            <event_filter event_param="resume_cause" filter_name="ResumeCause"/>
+            <event_filter event_param="reestablishment_cause" filter_name="ReestablishmentCause"/>
+        </event>
+        <event name="DuProcUeContextModification">
+            <event_filter event_param="qos_value" filter_name="Qos">
+                <struct name="drb_setup_list" repeated="foreach"/>
+            </event_filter>
+            <event_filter event_param="nr_type" filter_name="QosType"/>
+        </event>
+        <event name="DuProcUeContextSetup">
+            <event_filter event_param="pref_ue_group_id" filter_name="PrefUeGrpId"/>
+            <event_filter event_param="ue_group_id" filter_name="UeGrpId"/>
+            <event_filter event_param="serving_plmn_id" filter_name="PlmnId"/>
+            <event_filter event_param="qos_value" filter_name="Qos">
+                <struct name="drb_setup_list" repeated="foreach"/>
+            </event_filter>
+            <event_filter event_param="nr_type" filter_name="QosType"/>
+            <event_filter event_param="ue_mobility_group_id" filter_name="UeMobilityGrpId"/>
+            <event_filter event_param="ue_service_group_id" filter_name="UeServiceGrpId"/>
+            <event_filter event_param="ue_admission_group_id" filter_name="UeAdmissionGrpId">
+                <preliminary/>
+            </event_filter>
+        </event>
+    </events>
+</flex>

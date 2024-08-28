@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ # Copyright Ericsson AB
+ #
+ # The copyright to the computer programs herein is the property of
+ # Ericsson AB. The programs may be used and/or copied only with the
+ # written permission from Ericsson AB or in accordance with the terms
+ # conditions stipulated in the agreement/contract under which the
+ # programs have been supplied.
+ #
+ -->
+
+<flex xmlns="urn:com:ericsson:schema:xml:oss:ftem">
+    <date>2023-03-30</date>
+    <major_version>39</major_version>
+    <correction_version>0</correction_version>
+    <managed_function>CUUP</managed_function>
+    <filters>
+        <filter name="Qos">
+            <description>QoS value of bearers for which latency and contention delay values are measured. Can be either QCI value (NSA) or 5QI value (SA).</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="QosType">
+            <description>Type of QoS value. Can be either QCI (NSA) or 5QI (SA).</description>
+            <enumeration>
+                <member name="NR_TYPE_NO_VALUE">0</member>
+                <member name="NR_TYPE_NSA">1</member>
+                <member name="NR_TYPE_SA">2</member>
+            </enumeration>
+        </filter>
+        <filter name="PlmnId">
+            <description>Identifier of PLMN. Consists of MCC and MNC.</description>
+            <custom/>
+        </filter>
+        <filter name="PrefUeGrpId">
+            <description>Identifier of preference UE group used to determine UE configuration data.</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="UeGrpId">
+            <description>Identifier of UE group used to determine UE configuration data.</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="UeMobilityGrpId">
+            <description>Identifier of UE mobility group used to determine UE configuration data.</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="UeServiceGrpId">
+            <description>Identifier of UE service group used to determine UE configuration data.</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="UeAdmissionGrpId">
+            <description>Identifier of UE admission group used to determine UE configuration data.</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="Snssai">
+            <description>S-NSSAI composed of slice service type and service differentiator.</description>
+            <custom/>
+        </filter>
+    </filters>
+    <events>
+        <event name="CuUpDrbRelease">
+            <event_filter event_param="qos_value" filter_name="Qos"/>
+            <event_filter event_param="serving_plmn_id" filter_name="PlmnId"/>
+            <event_filter event_param="pref_ue_group_id" filter_name="PrefUeGrpId"/>
+            <event_filter event_param="ue_group_id" filter_name="UeGrpId"/>
+            <event_filter event_param="ue_mobility_group_id" filter_name="UeMobilityGrpId"/>
+            <event_filter event_param="ue_service_group_id" filter_name="UeServiceGrpId"/>
+            <event_filter event_param="ue_admission_group_id" filter_name="UeAdmissionGrpId">
+                <preliminary/>
+            </event_filter>
+            <event_filter event_param="s_nssai" filter_name="Snssai"/>
+        </event>
+        <event name="CuUpPerUeRbCgTrafficRepAggr10">
+            <event_filter event_param="qos_value" filter_name="Qos"/>
+            <event_filter event_param="nr_type" filter_name="QosType"/>
+            <event_filter event_param="serving_plmn_id" filter_name="PlmnId"/>
+            <event_filter event_param="pref_ue_group_id" filter_name="PrefUeGrpId"/>
+            <event_filter event_param="ue_group_id" filter_name="UeGrpId"/>
+            <event_filter event_param="ue_mobility_group_id" filter_name="UeMobilityGrpId"/>
+            <event_filter event_param="ue_service_group_id" filter_name="UeServiceGrpId"/>
+            <event_filter event_param="ue_admission_group_id" filter_name="UeAdmissionGrpId">
+                <preliminary/>
+            </event_filter>
+            <event_filter event_param="s_nssai" filter_name="Snssai"/>
+        </event>
+        <event name="CuUpPerUeRbS1NgTrafficRepAggr10">
+            <event_filter event_param="qos_value" filter_name="Qos"/>
+            <event_filter event_param="nr_type" filter_name="QosType"/>
+            <event_filter event_param="serving_plmn_id" filter_name="PlmnId"/>
+        </event>
+    </events>
+</flex>

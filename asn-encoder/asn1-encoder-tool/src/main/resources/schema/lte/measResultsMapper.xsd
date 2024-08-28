@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="MeasResultsMapper">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="measId" type="MeasIdMapper"/>
+                <xs:element name="measResultPCell">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="rsrpResult" type="RSRPRangeMapper"/>
+                            <xs:element name="rsrqResult" type="RSRQRangeMapper"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="measResultNeighCells" minOccurs="0">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="measResultListEUTRA" type="MeasResultListEUTRAMapper"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="MeasIdMapper">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="32"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="MeasResultListEUTRAMapper">
+        <xs:sequence minOccurs="1" maxOccurs="8">
+            <xs:element name="measResultEUTRA" type="MeasResultEUTRAMapper"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MeasResultEUTRAMapper">
+        <xs:sequence>
+            <xs:element name="physCellId" type="PhysCellIdMapper"/>
+            <xs:element name="measResult">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="rsrpResult" minOccurs="0" type="RSRPRangeMapper"/>
+                        <xs:element name="rsrqResult" minOccurs="0" type="RSRQRangeMapper"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="PhysCellIdMapper">
+        <xs:restriction base="xs:unsignedShort">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="503"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="RSRPRangeMapper">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="97"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="RSRQRangeMapper">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="34"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

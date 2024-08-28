@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<counters xmlns="com.ericsson.schema.etcm">
+
+    <pm_event_common_version>13</pm_event_common_version>
+    <pm_event_group_version>7</pm_event_group_version>
+    <pm_event_correction_version>0</pm_event_correction_version>
+    <etcm_date>2021-03-29</etcm_date>
+    <etcm_version>40</etcm_version>
+    <etcm_correction_version>0</etcm_correction_version>
+    <managed_function>CUUP</managed_function>
+
+    <counter>
+        <name format="pmEbsCuUpExampleCounter"/>
+        <documentation>
+            Description: This test counter is stepped by 1 when CuUpTestEventEnm is received
+            Trigger: This test counter is only stepped when data == 1
+        </documentation>
+        <description>This test counter is stepped by 1 when CuUpTestEventEnm is received</description>
+        <trigger>This test counter is only stepped when data == 1</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>PI</categorytype>
+        <categoryarea>Undefined</categoryarea>
+        <categoryscenario>Test counter</categoryscenario>
+        <pmeventname>CuUpTestEventEnm</pmeventname>
+        <mo>GNBCUUPFunction</mo>
+        <ossmo>CUUP</ossmo>
+        <measurementstatus>PRELIMINARY</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <counterstepcondition>
+                <op name="eq">
+                    <pref>data</pref>
+                    <nconst>1</nconst>
+                </op>
+            </counterstepcondition>
+            <stepexpression>
+                <incr>
+                    <nconst>1</nconst>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+</counters>

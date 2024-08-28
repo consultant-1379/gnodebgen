@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flex xmlns="urn:com:ericsson:schema:xml:oss:ftem">
+    <date>2021-05-28</date>
+    <major_version>24</major_version>
+    <correction_version>0</correction_version>
+    <managed_function>CUUP</managed_function>
+    <filters>
+        <filter name="Qos">
+            <description>QoS value of bearers for which latency and contention delay values are measured. Can be either QCI value (NSA) or 5QI value (SA).</description>
+            <range>
+                <min>0</min>
+                <max>255</max>
+            </range>
+        </filter>
+        <filter name="QosType">
+            <description>Type of QoS value. Can be either QCI (NSA) or 5QI (SA).</description>
+            <enumeration>
+                <member name="NR_TYPE_NO_VALUE">0</member>
+                <member name="NR_TYPE_NSA">1</member>
+                <member name="NR_TYPE_SA">2</member>
+            </enumeration>
+        </filter>
+        <filter name="PlmnId">
+            <description>Identifier of PLMN. Consists of MCC and MNC.</description>
+            <custom/>
+        </filter>
+    </filters>
+    <events>
+        <event name="CuUpPerUeRbCgTrafficRep">
+            <event_filter event_param="qos_value" filter_name="Qos">
+                <preliminary/>
+            </event_filter>
+            <event_filter event_param="nr_type" filter_name="QosType">
+                <preliminary/>
+            </event_filter>
+            <event_filter event_param="serving_plmn_id" filter_name="PlmnId">
+                <preliminary/>
+            </event_filter>
+        </event>
+        <event name="CuUpPerUeRbS1NgTrafficRep">
+            <event_filter event_param="qos_value" filter_name="Qos">
+                <preliminary/>
+            </event_filter>
+            <event_filter event_param="nr_type" filter_name="QosType">
+                <preliminary/>
+            </event_filter>
+            <event_filter event_param="serving_plmn_id" filter_name="PlmnId">
+                <preliminary/>
+            </event_filter>
+        </event>
+    </events>
+</flex>

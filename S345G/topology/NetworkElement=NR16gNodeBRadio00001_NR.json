@@ -1,0 +1,351 @@
+{
+    "networkElement": "NetworkElement=NR16gNodeBRadio00001", 
+    "moMap": {
+        "GNBDUFunction": [
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBDUFunction=1", 
+                "attributeMap": {
+                    "gNBId": 601, 
+                    "gNBDUFunctionId": "1", 
+                    "gNBIdLength": 22
+                }, 
+                "moClass": "GNBDUFunction"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBDUFunction=1,NRCellDU=NR16gNodeBRadio00001-1", 
+                "attributeMap": {
+                    "pLMNIdList": [
+                        {
+                            "mnc": "49", 
+                            "mcc": "128"
+                        }, 
+                        {
+                            "mnc": "50", 
+                            "mcc": "129"
+                        }, 
+                        {
+                            "mnc": "51", 
+                            "mcc": "130"
+                        }
+                    ], 
+                    "nCGI": 882976566429449, 
+                    "cellLocalId": 1801, 
+                    "nCI": 9848585
+                }, 
+                "moClass": "NRCellDU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBDUFunction=1,NRCellDU=NR16gNodeBRadio00001-2", 
+                "attributeMap": {
+                    "pLMNIdList": [
+                        {
+                            "mnc": "49", 
+                            "mcc": "128"
+                        }, 
+                        {
+                            "mnc": "50", 
+                            "mcc": "129"
+                        }, 
+                        {
+                            "mnc": "51", 
+                            "mcc": "130"
+                        }
+                    ], 
+                    "nCGI": 882976566429450, 
+                    "cellLocalId": 1802, 
+                    "nCI": 9848586
+                }, 
+                "moClass": "NRCellDU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBDUFunction=1,NRCellDU=NR16gNodeBRadio00001-3", 
+                "attributeMap": {
+                    "pLMNIdList": [
+                        {
+                            "mnc": "49", 
+                            "mcc": "128"
+                        }, 
+                        {
+                            "mnc": "50", 
+                            "mcc": "129"
+                        }, 
+                        {
+                            "mnc": "51", 
+                            "mcc": "130"
+                        }
+                    ], 
+                    "nCGI": 882976566429451, 
+                    "cellLocalId": 1803, 
+                    "nCI": 9848587
+                }, 
+                "moClass": "NRCellDU"
+            }
+        ], 
+        "GNBCUUPFunction": [
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUUPFunction=1", 
+                "attributeMap": {
+                    "gNBId": 601, 
+                    "gNBCUUPFunctionId": "1", 
+                    "gNBIdLength": 22
+                }, 
+                "moClass": "GNBCUUPFunction"
+            }
+        ], 
+        "GNBCUCPFunction": [
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1", 
+                "attributeMap": {
+                    "gNBCUCPFunctionId": "1", 
+                    "gNBId": 601, 
+                    "gNBIdLength": 22
+                }, 
+                "moClass": "GNBCUCPFunction"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-3", 
+                "attributeMap": {
+                    "nCI": 9848587, 
+                    "cellLocalId": 1803
+                }, 
+                "moClass": "NRCellCU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-2", 
+                "attributeMap": {
+                    "nCI": 9848586, 
+                    "cellLocalId": 1802
+                }, 
+                "moClass": "NRCellCU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-1", 
+                "attributeMap": {
+                    "nCI": 9848585, 
+                    "cellLocalId": 1801
+                }, 
+                "moClass": "NRCellCU"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-1,NRCellRelation=129_50_9848586", 
+                "attributeMap": {
+                    "srcnCI": 9848585
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-1,NRCellRelation=130_49_9848587", 
+                "attributeMap": {
+                    "srcnCI": 9848585
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-1,NRCellRelation=128_51_9996068", 
+                "attributeMap": {
+                    "srcnCI": 9848585
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-1,NRCellRelation=129_50_9996069", 
+                "attributeMap": {
+                    "srcnCI": 9848585
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-1,NRCellRelation=130_49_9996070", 
+                "attributeMap": {
+                    "srcnCI": 9848585
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-1,NRCellRelation=128_51_9979681", 
+                "attributeMap": {
+                    "srcnCI": 9848585
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-1,NRCellRelation=129_50_9979682", 
+                "attributeMap": {
+                    "srcnCI": 9848585
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-1,NRCellRelation=130_49_9979683", 
+                "attributeMap": {
+                    "srcnCI": 9848585
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-1,NRCellRelation=128_51_9963296", 
+                "attributeMap": {
+                    "srcnCI": 9848585
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-1,EUtranCellRelation=310_410_9996092", 
+                "attributeMap": {
+                    "srcnCI": 9848585
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-2,NRCellRelation=128_51_9848585", 
+                "attributeMap": {
+                    "srcnCI": 9848586
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-2,NRCellRelation=130_49_9848587", 
+                "attributeMap": {
+                    "srcnCI": 9848586
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-2,NRCellRelation=128_51_9996068", 
+                "attributeMap": {
+                    "srcnCI": 9848586
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-2,NRCellRelation=129_50_9996069", 
+                "attributeMap": {
+                    "srcnCI": 9848586
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-2,NRCellRelation=130_49_9996070", 
+                "attributeMap": {
+                    "srcnCI": 9848586
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-2,NRCellRelation=128_51_9979681", 
+                "attributeMap": {
+                    "srcnCI": 9848586
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-2,NRCellRelation=129_50_9979682", 
+                "attributeMap": {
+                    "srcnCI": 9848586
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-2,NRCellRelation=130_49_9979683", 
+                "attributeMap": {
+                    "srcnCI": 9848586
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-2,NRCellRelation=128_51_9963296", 
+                "attributeMap": {
+                    "srcnCI": 9848586
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-2,EUtranCellRelation=310_410_9996093", 
+                "attributeMap": {
+                    "srcnCI": 9848586
+                }, 
+                "moClass": "EUtranCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-3,NRCellRelation=128_51_9848585", 
+                "attributeMap": {
+                    "srcnCI": 9848587
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-3,NRCellRelation=129_50_9848586", 
+                "attributeMap": {
+                    "srcnCI": 9848587
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-3,NRCellRelation=128_51_9996068", 
+                "attributeMap": {
+                    "srcnCI": 9848587
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-3,NRCellRelation=129_50_9996069", 
+                "attributeMap": {
+                    "srcnCI": 9848587
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-3,NRCellRelation=130_49_9996070", 
+                "attributeMap": {
+                    "srcnCI": 9848587
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-3,NRCellRelation=128_51_9979681", 
+                "attributeMap": {
+                    "srcnCI": 9848587
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-3,NRCellRelation=129_50_9979682", 
+                "attributeMap": {
+                    "srcnCI": 9848587
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-3,NRCellRelation=130_49_9979683", 
+                "attributeMap": {
+                    "srcnCI": 9848587
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-3,NRCellRelation=128_51_9963296", 
+                "attributeMap": {
+                    "srcnCI": 9848587
+                }, 
+                "moClass": "NRCellRelation"
+            }, 
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001,GNBCUCPFunction=1,NRCellCU=NR16gNodeBRadio00001-3,EUtranCellRelation=310_410_9996094", 
+                "attributeMap": {
+                    "srcnCI": 9848587
+                }, 
+                "moClass": "EUtranCellRelation"
+            }
+        ], 
+        "ManagedElement": [
+            {
+                "moFdn": "SubNetwork=Europe,SubNetwork=Ireland,MeContext=NR16gNodeBRadio00001,ManagedElement=NR16gNodeBRadio00001", 
+                "attributeMap": {
+                    "swVersion": "CXP9024418/6_R79A10", 
+                    "neTimeZone": "GMT"
+                }, 
+                "moClass": "ManagedElement"
+            }
+        ]
+    }
+}

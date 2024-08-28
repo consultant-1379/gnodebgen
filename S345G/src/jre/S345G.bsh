@@ -1,0 +1,22 @@
+#!/bin/bsh
+#
+# Script to execute S345G with local JRE
+#
+
+# keep old settings so they can be restored
+OLD_HOME=$JAVA_HOME
+OLD_PATH=$PATH
+#
+# jre downloaded from 
+# https://jdk.java.net/java-se-ri/8-MR3
+# Compact3
+#
+JRE=./jre
+JAVA_HOME=$JRE
+PATH=$JRE/bin:$PATH
+java -version
+java  -Xmx2g -jar S345G-1.4.1-SNAPSHOT.jar $@
+# reset environment
+JAVA_HOME=$OLD_HOME
+PATH=$OLD_PATH
+

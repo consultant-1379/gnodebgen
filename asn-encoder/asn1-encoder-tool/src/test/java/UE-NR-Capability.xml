@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:nrUeNRCapabilityMapper xmlns:p="http://www.obj-sys.com/NR-RRC-Definitions" xmlns:p1="http://www.obj-sys.com/v1.0/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.obj-sys.com/NR-RRC-Definitions nrUeNRCapability.xsd ">
+	<p:accessStratumRelease>rel15</p:accessStratumRelease>
+	<p:pdcp-Parameters>
+		<p:supportedROHC-Profiles>
+			<p:profile0x0000>false</p:profile0x0000>
+			<p:profile0x0001>true</p:profile0x0001>
+			<p:profile0x0002>false</p:profile0x0002>
+			<p:profile0x0003>true</p:profile0x0003>
+			<p:profile0x0004>false</p:profile0x0004>
+			<p:profile0x0006>true</p:profile0x0006>
+			<p:profile0x0101>false</p:profile0x0101>
+			<p:profile0x0102>true</p:profile0x0102>
+			<p:profile0x0103>false</p:profile0x0103>
+			<p:profile0x0104>true</p:profile0x0104>
+		</p:supportedROHC-Profiles>
+		<p:maxNumberROHC-ContextSessions>cs2</p:maxNumberROHC-ContextSessions>
+		<p:shortSN>supported</p:shortSN>
+	</p:pdcp-Parameters>
+	<p:phy-Parameters>
+		<p:phy-ParametersCommon>
+			<p:maxLayersMIMO-Indication>supported</p:maxLayersMIMO-Indication>
+		</p:phy-ParametersCommon>
+		<p:phy-ParametersFR1>
+			<p:pdsch-256QAM-FR1>supported</p:pdsch-256QAM-FR1>
+		</p:phy-ParametersFR1>
+	</p:phy-Parameters>
+	<p:rf-Parameters>
+		<p:supportedBandListNR>
+			<p:BandNR>
+				<p:bandNR>15</p:bandNR>
+				<p:ue-PowerClass>pc1</p:ue-PowerClass>
+			</p:BandNR>
+		</p:supportedBandListNR>
+	</p:rf-Parameters>
+	<p:nonCriticalExtension>
+		<p:nonCriticalExtension>
+			<p:ims-Parameters>
+				<p:ims-ParametersCommon>
+					<p:voiceOverEUTRA-5GC>supported</p:voiceOverEUTRA-5GC>
+				</p:ims-ParametersCommon>
+				<p:ims-ParametersFRX-Diff>
+					<p:voiceOverNR>supported</p:voiceOverNR>
+				</p:ims-ParametersFRX-Diff>
+			</p:ims-Parameters>
+		</p:nonCriticalExtension>
+	</p:nonCriticalExtension>
+</p:nrUeNRCapabilityMapper>

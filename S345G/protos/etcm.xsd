@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:etcm="com.ericsson.schema.etcm"
+	targetNamespace="com.ericsson.schema.etcm"
+	elementFormDefault="qualified"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+
+	<xs:simpleType name="revisionType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:pattern value="[A-Z]+[A-Z0-9]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- counters can have 0 to many counter elements in it -->
+
+	<xs:element name="counters">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice>
+					<xs:sequence>
+						<xs:element name="docno" type="xs:string" />
+						<xs:element name="revision" type="etcm:revisionType" />
+						<xs:element name="date" type="xs:date" />
+						<xs:element name="efv" type="xs:string" />   <!-- event format version -->
+					</xs:sequence>
+					<xs:sequence>
+						<xs:element name="pm_event_common_version" type="xs:integer"  />
+						<xs:element name="pm_event_group_version" type="xs:integer"  />
+						<xs:element name="pm_event_correction_version" type="xs:integer"   />
+						<xs:element name="etcm_date" type="xs:date" />
+						<xs:element name="etcm_version" type="xs:integer"  />
+						<xs:element name="etcm_correction_version" type="xs:integer"   />
+						<xs:element name="managed_function" type="xs:string"  />
+					</xs:sequence>
+				</xs:choice>
+				<xs:element ref="etcm:counter" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="counter">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="etcm:name" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="etcm:documentation" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="etcm:comment" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="etcm:pmeventname" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="etcm:mo" minOccurs="0" maxOccurs="8" />  <!-- only needed for node side counters -->
+				<xs:element ref="etcm:moid" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="etcm:ossmo" minOccurs="0" maxOccurs="1" />  <!-- only needed for OSS counters -->
+				<xs:element ref="etcm:measurementstatus" minOccurs="0" maxOccurs="1"/>	<!-- Prel to be added for 5G -->
+				<xs:element ref="etcm:deprecatedsince" minOccurs="0" maxOccurs="1"/>	<!-- Prel to be added for 5G -->
+				<xs:element ref="etcm:counterdata" minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+			<xs:attribute name="deprecated" use="optional" type="etcm:TrueFalseType" default="False" />  <!-- added in PA10 -->
+			<xs:attribute name="type" use="optional" type="etcm:DefinitionType" default="public" />      <!-- added in PA10 -->
+			<xs:attribute name="createdby" use="optional" type="xs:string" default="" />  <!-- added in PB1 of IWD for ENM Flex Counter metaData -->
+			<xs:attribute name="createddate" use="optional" type="xs:dateTime" /> <!-- added in PB1 of IWD for ENM Flex Counter metaData -->
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="TrueFalseType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="True" />
+			<xs:enumeration value="False" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DefinitionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="public" />   <!-- Normal public counter -->
+			<xs:enumeration value="internal" /> <!-- Internal help counter - not to include in output file -->
+			<xs:enumeration value="eor" />    <!-- End of ROP counter - calculated at end of ROP after events are consumed -->
+		</xs:restriction>
+	</xs:simpleType>
+
+
+
+	<!-- The name of a counter contains a format string (as an attribute) and
+		0 to many param references. -->
+
+	<xs:element name="name">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:choice>
+					<xs:element ref="etcm:pref" />
+					<xs:element ref="etcm:aref" />
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="format" use="required" type="etcm:FormatString" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="FormatString">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:pattern value="[A-Za-z][A-Za-z0-9 |_$.-]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="CounterName">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:pattern value="[A-Za-z][A-Za-z0-9_]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<!-- the pmeventname is a simple type - should be imported...? ...but it
+		has the same restriction as EventParamName... -->
+
+	<xs:simpleType name="EventParamName">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:pattern value="[A-Za-z][A-Za-z0-9_]*" />  <!-- Prel to be added for 5G -->
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="pmeventname" type="etcm:EventParamName" />
+
+
+	<!-- Prel to be added for 5G -->
+	<xs:simpleType name="MeasurementStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="USED"/>
+			<xs:enumeration value="PRELIMINARY"/>
+			<xs:enumeration value="DEPRECATED"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="measurementstatus" type="etcm:MeasurementStatus"/>
+
+	<xs:simpleType name="Deprecatedsince">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:pattern value="[0-9][0-9].[Q][0-9]" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="deprecatedsince" type="etcm:Deprecatedsince"/>
+
+	<!-- Reference to an event parameter -->
+
+	<xs:element name="pref" type="etcm:EventParamName" />
+
+
+	<!-- Reference to a counter name -->
+
+	<xs:element name="pmref" type="etcm:CounterName" />
+
+
+
+	<!-- MO Class name is also a simple name with restrictions. -->
+
+	<xs:simpleType name="MocName">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:pattern value="[A-Z][A-Z0-9a-z]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="mo" type="etcm:MocName" />
+
+
+	<!-- The MO ID is a reference to an event parameter, but allows for a mask
+		to only use parts of the value found with that parameter. The mask value
+		can be in one of two formats (both needed?): "0xvvvv" specifying the hexadecimal
+		value 'vvvv'. The mask will be applied using bitwise AND with the value (assuming
+		the value is an integer), and the result of this operation is to be used.
+		"Sn1" or "Sn1:n2" where n1 and n2 are integers. The value is assumed to be
+		a string, and the mask retrieves a sub-string starting at index n1 (inclusive)
+		and ending at index n2 (inclusive) or at end of string if n2 is omitted.
+		If n2 is negative, it is counted from the end of the string. If n1 is negative
+		then n2 must also be negative (or omitted), and n1 is then counter from the
+		end of the string. -->
+
+	<xs:simpleType name="MaskFormat">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:pattern
+				value="(0x[0-9A-F]+)|(S-?[0-9]+)|(S-[0-9]+:-[0-9]+)|(S[0-9]+:-?[0-9]+)" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:element name="moid">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:token">
+					<xs:attribute name="mask" use="required" type="etcm:MaskFormat" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+
+
+	<!-- define an enum over OSS MO-classes that OSS counters operate on. -->
+
+	<xs:element name="ossmo" type="etcm:OssMoc" />
+
+	<xs:simpleType name="OssMoc">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NODE" />
+			<xs:enumeration value="CELL" />
+			<xs:enumeration value="CELL_RELATION" />
+			<xs:enumeration value="TERM_POINT_MME" />
+			<xs:enumeration value="TERM_POINT_ENB" />
+			<xs:enumeration value="PROCESSOR_LOAD" />
+			<xs:enumeration value="TAI" />
+			<xs:enumeration value="MME" />
+			<xs:enumeration value="CUUP" /> <!-- Prel to be added for 5G -->
+			<xs:enumeration value="CUCP" />
+			<xs:enumeration value="DU" />
+			<xs:enumeration value="DU_CELL" />
+			<xs:enumeration value="CU_CELL" />
+			<xs:enumeration value="SCELL" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<!-- All binary operators -->
+
+	<xs:simpleType name="OperationName">
+		<xs:restriction base="xs:string">
+
+			<!-- arithmetics over numbers only -->
+			<xs:enumeration value="plus" />
+			<xs:enumeration value="minus" />
+			<xs:enumeration value="divide" />
+			<xs:enumeration value="multiply" />
+
+			<!-- compareson of two numeric values -->
+			<xs:enumeration value="eq" />
+			<xs:enumeration value="neq" />
+			<xs:enumeration value="lt" />
+			<xs:enumeration value="leq" />
+			<xs:enumeration value="gt" />
+			<xs:enumeration value="geq" />
+
+			<!-- boolean operators -->
+			<xs:enumeration value="and" />
+			<xs:enumeration value="or" />
+
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="AssignmentOptions">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="asis" />
+			<xs:enumeration value="min" />
+			<xs:enumeration value="max" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<!-- The function call is not fully modelled the xml schema can not express
+		limmitations on arguments for a particular finction. Any implementation of
+		this schema must only support functional arguments as described below - the
+		comments below are normative. -->
+
+	<xs:simpleType name="FunctionName">
+		<xs:restriction base="xs:string">
+			<!-- ts(hour, minute, second, millisec) Creation of a time stamp value
+				with a resolution of 24 hours. -->
+			<xs:enumeration value="ts" />
+
+			<!-- duration(resolution, start, stop) Calculates the duration in milliseconds
+				between the two time stamp values 'start' and 'stop' given in _time_ order
+				(this may not be value order). As the time stamps are local to their resolution
+				(i.e. an hour based time stamp is only valid within the current hour and
+				will wrap every 24th hour) a correct duration value is only to be guarantied
+				for durations shorter than that time stamp resolution. The first argument
+				to the function is always the resolution of the time stamps expressed in
+				milliseconds. -->
+			<xs:enumeration value="duration" />
+
+		</xs:restriction>
+	</xs:simpleType>
+
+
+
+	<xs:simpleType name="PdfCardinality">
+		<xs:restriction base="xs:nonNegativeInteger" />
+	</xs:simpleType>
+
+	<xs:complexType name="Empty">
+		<!-- look, no content, no attributes - it is empty! -->
+	</xs:complexType>
+
+	<!-- The countertype declaration will use a variation of child elements
+		to specify the counter type, and these will be one of the following: - the
+		empty element 'single' specifying a normal single valued counter - the element
+		'pdf' with an integer valued content specifying the number bins in a zero
+		indexed pdf counter (first bin is at index 0) - the element 'pdfmap' containing
+		a sequence of 'bin' declarations -->
+
+
+	<xs:element name="countertype">
+		<xs:complexType>
+			<xs:sequence> <!-- Prel to be added for 5G -->
+				<xs:choice>
+					<xs:element name="single" type="etcm:Empty" />
+					<xs:element name="pdf" type="xs:nonNegativeInteger" />
+					<xs:element ref="etcm:pdfmap" />
+				</xs:choice>
+				<xs:element name="compressed" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- PDF maps declares a mapping from values to the bin to increment - it
+		is essentially a grouping fnction. There are tree types of BINs: - the centerbin,
+		which has both ranges (upper and lower) inclusive. It is mandatory but can
+		only occur once. - the lowbin, which have the upper limit exclusive and the
+		lower limit inclusive. It is optional. - the highbin, which have the lower
+		limit exclusive and and the upper inclusive. It is optional. The purpose
+		is to describe a set of BINs with integer intervals with no gaps: [0..10[,
+		[10..20[, [20..30], ]30..40] The special value 'inf' can be used as min value
+		in the first lowbin and as max value in the last highbin - but not elsewhere
+		(not part of the schema validation, though). -->
+
+	<xs:element name="pdfmap">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="etcm:lowbin" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="etcm:centerbin" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="etcm:highbin" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+
+	<!-- Optional attribute value (deafults to "") that is either an integer
+		or the string "inf". -->
+
+	<xs:simpleType name="OptUnboundInteger">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:pattern value="(inf)|(-?[0-9]+)|[0-9]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Mandatory attribute value in the form of an integer or 'inf' -->
+
+	<xs:simpleType name="UnboundInteger">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:pattern value="(inf)|(-?[0-9]+)" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Optional attribute value in the form of an integer or "" -->
+
+	<xs:simpleType name="OptInteger">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:pattern value="(-?[0-9]+)|[0-9]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<!-- Alternative bin declarations with only correctly typed attributes. -->
+
+	<xs:element name="lowbin">
+		<xs:complexType>
+			<xs:attribute name="min" type="etcm:UnboundInteger" />
+			<xs:attribute name="max" type="xs:integer" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="centerbin">
+		<xs:complexType>
+			<xs:attribute name="min" type="xs:integer" />
+			<xs:attribute name="max" type="xs:integer" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="highbin">
+		<xs:complexType>
+			<xs:attribute name="min" type="xs:integer" />
+			<xs:attribute name="max" type="etcm:UnboundInteger" />
+		</xs:complexType>
+	</xs:element>
+
+
+
+
+	<!-- parameter name is all upper case and underscore. -->
+
+	<xs:simpleType name="ParamName">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:pattern value="[A-Z][A-Z_0-9]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+
+
+	<xs:element name="counterdata">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="etcm:counteroperation" />
+				<xs:element ref="etcm:countertype" />
+				<xs:element ref="etcm:variable" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="etcm:counterstepcondition" minOccurs="0"
+					maxOccurs="1" />
+				<xs:element ref="etcm:stepexpression" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+
+
+	<xs:element name="counteroperation" type="etcm:CounterOperation" />
+
+	<xs:simpleType name="CounterOperation">
+		<xs:restriction base="xs:string">
+
+			<!-- the incr operator will accumulate values. Initial vaue each ROP is
+				zero (0). -->
+			<xs:enumeration value="ACC" />
+
+			<!-- The incr operator will assign values, allways keeping the smallest
+				value seen during the ROP. Initial value is the maximal numerical representation
+				for the data type of the counter. -->
+			<xs:enumeration value="MIN" />
+
+			<!-- The incr operator will assign values, allways keeping the largest
+				value seen during the ROP. Initial value is zero (0). -->
+			<xs:enumeration value="MAX" />
+
+			<!-- Prel to be added for 5G -->
+			<!-- The incr operator will assign values, allways keeping the Last
+				value seen during the ROP. Initial value is zero (0). -->
+			<xs:enumeration value="LAST_UPDATE" />
+
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<!-- The step condition is a boolean expression or an 'ifany' or 'ifall'
+		expression. -->
+
+	<xs:element name="counterstepcondition">
+		<xs:complexType>
+			<xs:choice>
+				<xs:group ref="etcm:BooleanValueExpression" />
+				<xs:element ref="etcm:ifany" />
+				<xs:element ref="etcm:ifall" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ifany iterates through the parameter pref (array of some type), assigning
+		the loopvar to the current index in each loop, and evaluating the second
+		child element expecting a boolean value as result. The ifany is true if the
+		expression evaluated to true for at least one index, and may abort valuation
+		as soon as a true value is found. -->
+
+	<xs:element name="ifany">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="etcm:pref" />
+				<xs:group ref="etcm:BooleanValueExpression" />
+			</xs:sequence>
+			<xs:attribute name="loopvar" use="required" type="etcm:JavaIdentifier" />
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ifall iterates through the parameter pref (array of some type), assigning
+		the loopvar to the current index in each loop, and evaluating the second
+		child element expecting a boolean value as result. The ifall is true if teh
+		expression evaluated to true for all indexes, but may abort valuation as
+		soon as a false value is found. -->
+
+	<xs:element name="ifall">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="etcm:pref" />
+				<xs:group ref="etcm:BooleanValueExpression" />
+			</xs:sequence>
+			<xs:attribute name="loopvar" use="required" type="etcm:JavaIdentifier" />
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Declaration of a helper variable. -->
+
+	<xs:element name="variable">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="etcm:ValueExpression" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="etcm:JavaIdentifier" />
+			<xs:attribute name="type" use="optional"
+				type="etcm:JavaIntegerIdentifier" default="long" />
+		</xs:complexType>
+	</xs:element>
+
+
+	<!-- The stepexpression contains a side effect, the 'incr' statement. This
+		statement may exist on top level, or nested as a child to the if or foreach
+		statement. -->
+
+	<xs:element name="stepexpression">
+		<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="unbounded">
+				<xs:group ref="etcm:Statements" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="foreach">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice>
+					<xs:element ref="etcm:pref" />
+					<xs:element ref="etcm:pmref" />
+				</xs:choice>
+				<xs:choice>
+					<xs:element ref="etcm:if" />
+					<xs:element ref="etcm:incr" />
+					<xs:element ref="etcm:set" />
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="loopvar" use="required" type="etcm:JavaIdentifier" />
+		</xs:complexType>
+	</xs:element>
+
+	<!-- if is a statement, not expression (does not return a value) -->
+	<xs:element name="if">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="etcm:BooleanValueExpression" />
+				<xs:choice>
+					<xs:element ref="etcm:incr" />
+					<xs:element ref="etcm:set" />
+					<xs:element ref="etcm:foreach" />
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:simpleType name="JavaIdentifier">  <!-- subset of valid java identifier syntax -->
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:pattern value="[a-z][a-zA-Z_0-9]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="JavaIntegerIdentifier">  <!-- subset of valid java integers -->
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="short" />
+			<xs:enumeration value="int" />
+			<xs:enumeration value="long" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="funcall">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:group ref="etcm:ValueExpression" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="etcm:FunctionName" />
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:group name="ValueExpression">
+		<xs:choice>
+			<!-- <xs:element ref="loopvar"/> synonymous to vref - correct? -->
+			<xs:element ref="etcm:aref" />
+			<xs:element ref="etcm:pref" />
+			<xs:element ref="etcm:pmref" />
+			<xs:element ref="etcm:sref" />
+			<xs:element ref="etcm:vref" />
+			<xs:element ref="etcm:op" />
+			<xs:element ref="etcm:funcall" />
+			<xs:element ref="etcm:nconst" />
+			<xs:element ref="etcm:ifany" />   <!-- added in PA10 -->
+			<xs:element ref="etcm:ifall" />   <!-- added in PA10 -->
+		</xs:choice>
+	</xs:group>
+
+
+	<xs:group name="Statements">
+		<xs:choice>
+			<xs:element ref="etcm:incr" />
+			<xs:element ref="etcm:set" />
+			<xs:element ref="etcm:foreach" />
+			<xs:element ref="etcm:if" />
+		</xs:choice>
+	</xs:group>
+
+	<!-- for boolean computations we don't have that much to choose from... -->
+	<xs:group name="BooleanValueExpression">
+		<xs:choice>
+			<xs:element ref="etcm:op" />
+		</xs:choice>
+	</xs:group>
+
+	<xs:element name="vref" type="etcm:JavaIdentifier" />
+
+	<!-- the loopvar can be used at any place the vref is used -->
+	<xs:element name="loopvar" substitutionGroup="etcm:vref" />
+
+
+	<!-- Binary operators -->
+
+	<xs:element name="op">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="etcm:ValueExpression" />
+				<xs:group ref="etcm:ValueExpression"/>
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="etcm:OperationName" />
+		</xs:complexType>
+	</xs:element>
+
+
+
+
+	<!-- struct reference -->
+	<xs:element name="sref">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice>
+					<xs:element ref="etcm:aref" />
+					<xs:element ref="etcm:pref" />
+					<xs:element ref="etcm:pmref" />
+					<xs:element ref="etcm:sref" />
+				</xs:choice>
+				<xs:element ref="etcm:field" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<!-- array reference -->
+	<xs:element name="aref">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice>
+					<xs:element ref="etcm:aref" />
+					<xs:element ref="etcm:pref" />
+					<xs:element ref="etcm:pmref" />
+					<xs:element ref="etcm:sref" />
+				</xs:choice>
+				<xs:group ref="etcm:ValueExpression" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- The incr operator increments the counter by the value of the first
+		argument (the first child element), but for a PDF counter it will also require
+		a scond argument specifying the BIN to increment, and for a PDFMAP the second
+		argument will be mapped to the aproperiate bin based on the bin ranges declared
+		in the PDFMAP. -->
+
+	<xs:element name="incr">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="etcm:ValueExpression" />
+				<xs:choice minOccurs="0" maxOccurs="1">
+					<xs:group ref="etcm:ValueExpression" />
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="variable" use="optional" type="etcm:JavaIdentifier" />
+		</xs:complexType>
+	</xs:element>
+
+	<!-- The set operator will allways assign a value without taking previous
+		values into account. Operates on single valued counters, local variables
+		or PDF counters. -->
+
+	<xs:element name="set">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="etcm:ValueExpression" />
+				<xs:choice minOccurs="0" maxOccurs="1">
+					<xs:group ref="etcm:ValueExpression" />
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="variable" use="optional" type="etcm:JavaIdentifier" />
+			<xs:attribute name="type" use="optional" type="etcm:AssignmentOptions"
+				default="asis" />
+		</xs:complexType>
+	</xs:element>
+
+	<!-- the struct field name -->
+	<xs:element name="field" type="etcm:EventParamName" />
+
+	<!-- numeric constant -->
+	<xs:element name="nconst" type="xs:integer" />
+
+	<!-- documentation of counter for CPI purposes -->
+	<xs:element name="documentation" type="xs:string" />
+
+	<!-- internal comments about a counter, e.g. WP number, requirement and
+		other. -->
+	<xs:element name="comment" type="xs:string" />
+
+</xs:schema>

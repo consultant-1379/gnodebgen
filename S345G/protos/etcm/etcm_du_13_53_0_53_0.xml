@@ -1,0 +1,1720 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<counters xmlns="com.ericsson.schema.etcm">
+
+    <pm_event_common_version>13</pm_event_common_version>
+    <pm_event_group_version>53</pm_event_group_version>
+    <pm_event_correction_version>0</pm_event_correction_version>
+    <etcm_date>2021-03-29</etcm_date>
+    <etcm_version>53</etcm_version>
+    <etcm_correction_version>0</etcm_correction_version>
+    <managed_function>DU</managed_function>
+
+    <counter>
+        <name format="pmEbsMacRBSymUtilUlMax"/>
+        <documentation>
+            Description: Maximum utilization of uplink resource block symbols in ROP sampled every 1 second.
+Unit: N/A
+            Trigger: Calculated based on following numbers:
+  - Aggregated number of resource block symbols used for all UL channels in 1 second.
+  - Aggregated number of available UL resource block symbols in 1 second.
+        </documentation>
+        <description>Maximum utilization of uplink resource block symbols in ROP sampled every 1 second.
+Unit: N/A</description>
+        <trigger>Calculated based on following numbers:
+  - Aggregated number of resource block symbols used for all UL channels in 1 second.
+  - Aggregated number of available UL resource block symbols in 1 second.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>RBSym Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>MAX</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <counterstepcondition>
+                <op name="neq">
+                    <pref>per_cell_mac_rbsym_total_avail_ul</pref>
+                    <nconst>0</nconst>
+                </op>
+            </counterstepcondition>
+            <stepexpression>
+                <set type="max">
+                    <op name="divide">
+                        <op name="multiply">
+                            <nconst>100</nconst>
+                            <op name="plus">
+                                <pref>per_cell_mac_rbsym_used_pusch_type_a</pref>
+                                <pref>per_cell_mac_rbsym_used_pusch_type_b</pref>
+                            </op>
+                        </op>
+                        <pref>per_cell_mac_rbsym_total_avail_ul</pref>
+                    </op>
+                </set>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymAvailUl"/>
+        <documentation>
+            Description: Aggregated number of resource block symbols available for uplink transmission during complete ROP.
+Unit: N/A
+            Trigger: Stepped when UL resource block symbols are used in one of the following cases:
+- Based on configuration.
+- After considering spectrum sharing.
+- As SRS in symbols of guard band.
+        </documentation>
+        <description>Aggregated number of resource block symbols available for uplink transmission during complete ROP.
+Unit: N/A</description>
+        <trigger>Stepped when UL resource block symbols are used in one of the following cases:
+- Based on configuration.
+- After considering spectrum sharing.
+- As SRS in symbols of guard band.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>RBSym Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_mac_rbsym_total_avail_ul</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymCsiRs"/>
+        <documentation>
+            Description: Aggregated number of resource block symbols used for CSI-RS, TRS, and CSI-IM during complete ROP.
+Unit: N/A
+            Trigger: Incremented for each downlink resource block symbol used for CSI-RS, including TRS and CSI-IM.
+Truncation of (Number of resource element symbols / 12) is equal to number of resource block symbols.
+        </documentation>
+        <description>Aggregated number of resource block symbols used for CSI-RS, TRS, and CSI-IM during complete ROP.
+Unit: N/A</description>
+        <trigger>Incremented for each downlink resource block symbol used for CSI-RS, including TRS and CSI-IM.
+Truncation of (Number of resource element symbols / 12) is equal to number of resource block symbols.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>RBSym Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_mac_rbsym_used_csi_rs</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsRadioRaCbPreambles"/>
+        <documentation>
+            Description: Number of detected CBRA Msg1 preambles.
+Unit: messages
+            Trigger: Stepped at each received preamble.
+        </documentation>
+        <description>Number of detected CBRA Msg1 preambles.
+Unit: messages</description>
+        <trigger>Stepped at each received preamble.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Accessibility</categoryarea>
+        <categoryscenario>Random Access</categoryscenario>
+        <pmeventname>DuPerRadioCellMeasurement</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_ra_cb_preambles</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsActiveUeDlSum"/>
+        <documentation>
+            Description: Number of active UE instances that have DRB data in UE-dedicated downlink buffer.
+Unit: N/A
+            Trigger: Stepped for each active UE instance in each slot.
+        </documentation>
+        <description>Number of active UE instances that have DRB data in UE-dedicated downlink buffer.
+Unit: N/A</description>
+        <trigger>Stepped for each active UE instance in each slot.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>Active UE</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_active_ue_dl_sum</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsUeCtxtSetupFailUeCapFail"/>
+        <documentation>
+            Description: Number of times a UE Context Setup procedure fails in gNodeB-DU because UE capability does not match NRCellDU capability.
+            Trigger: Stepped when UE Context Setup fails due to an unsuccessful UE capability check.
+        </documentation>
+        <description>Number of times a UE Context Setup procedure fails in gNodeB-DU because UE capability does not match NRCellDU capability.</description>
+        <trigger>Stepped when UE Context Setup fails due to an unsuccessful UE capability check.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason>Status PRELIMINARY</limitationreason>
+        <categorytype>PI</categorytype>
+        <categoryarea>Accessibility, Mobility</categoryarea>
+        <categoryscenario>UE Context Establishment</categoryscenario>
+        <pmeventname>DuProcUeContextSetup</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>PRELIMINARY</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <counterstepcondition>
+                <op name="eq">
+                    <pref>ue_context_setup_result</pref>
+                    <nconst>5</nconst>
+                </op>
+            </counterstepcondition>
+            <stepexpression>
+                <incr>
+                    <nconst>1</nconst>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacTimeDlDrb"/>
+        <documentation>
+            Description: Aggregated time for HARQ initial transmission scheduling downlink of DRB since last scheduled DRB (delta time between scheduling occasions). Meanwhile, there is data in buffer. Unit: 125 us
+            Trigger: First scheduling occasion for new packet arriving to empty DRB buffer is excluded. Last scheduling occasion for HARQ initial transmission to drain DRB buffer is excluded. HARQ retransmission is excluded. In case of carrier aggregation, HARQ initial transmission scheduling can be in PCell or SCell.
+        </documentation>
+        <description>Aggregated time for HARQ initial transmission scheduling downlink of DRB since last scheduled DRB (delta time between scheduling occasions). Meanwhile, there is data in buffer. Unit: 125 us</description>
+        <trigger>First scheduling occasion for new packet arriving to empty DRB buffer is excluded. Last scheduling occasion for HARQ initial transmission to drain DRB buffer is excluded. HARQ retransmission is excluded. In case of carrier aggregation, HARQ initial transmission scheduling can be in PCell or SCell.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Downlink Throughput</categoryscenario>
+        <pmeventname>DuPerUeRbTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_rb_mac_time_dl_drb</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacTimeDlDrbQos"/>
+        <documentation>
+            Description: Aggregated time for HARQ initial transmission scheduling of downlink DRB, while there is data in buffer.
+Accumulates measured time from all DRBs with same QoS.
+Unit: 125 microseconds
+            Trigger: Following cases are excluded:
+- First scheduling occasion for new packet arriving to an empty DRB buffer.
+- Last scheduling occasion for HARQ initial transmission to drain DRB buffer.
+- HARQ retransmission.
+In case of carrier aggregation, HARQ initial transmission scheduling can be in PCell or SCell. Counter is accumulated in PCell.
+        </documentation>
+        <description>Aggregated time for HARQ initial transmission scheduling of downlink DRB, while there is data in buffer.
+Accumulates measured time from all DRBs with same QoS.
+Unit: 125 microseconds</description>
+        <trigger>Following cases are excluded:
+- First scheduling occasion for new packet arriving to an empty DRB buffer.
+- Last scheduling occasion for HARQ initial transmission to drain DRB buffer.
+- HARQ retransmission.
+In case of carrier aggregation, HARQ initial transmission scheduling can be in PCell or SCell. Counter is accumulated in PCell.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Downlink Throughput</categoryscenario>
+        <pmeventname>DuPerUeRbTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <pdf>256</pdf>
+                <compressed>true</compressed>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_rb_mac_time_dl_drb</pref>
+                    <pref>qos_value</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacLatTimeDlDrxSyncSampQos"/>
+        <documentation>
+            Description: Aggregated number of samples for downlink MAC latency measurements for each QoS with DRX impact but without out-of-sync impact. DL MAC latency measures MAC scheduling latency between reception of packet in empty DL buffer and transmission of first packet.
+Unit: N/A
+            Trigger: Stepped at DL MAC latency measurement when the following conditions apply:
+  - UE is in DRX_SLEEP state and in UL in-sync state.
+  - First packet is received in empty DL buffer.
+In case of carrier aggregation, first packet transmission can be in PCell or SCell. Counter is accumulated in PCell.
+        </documentation>
+        <description>Aggregated number of samples for downlink MAC latency measurements for each QoS with DRX impact but without out-of-sync impact. DL MAC latency measures MAC scheduling latency between reception of packet in empty DL buffer and transmission of first packet.
+Unit: N/A</description>
+        <trigger>Stepped at DL MAC latency measurement when the following conditions apply:
+  - UE is in DRX_SLEEP state and in UL in-sync state.
+  - First packet is received in empty DL buffer.
+In case of carrier aggregation, first packet transmission can be in PCell or SCell. Counter is accumulated in PCell.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Latency and Delay, Discontinuous Reception</categoryscenario>
+        <pmeventname>DuPerCellQosTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <pdf>256</pdf>
+                <compressed>true</compressed>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_qos_mac_lat_time_dl_drxinactive_insync_samp</pref>
+                    <pref>qos_value</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymUsedPdcchTypeB"/>
+        <documentation>
+            Description: Aggregated number of resource block symbols used by PDCCH for scheduling of PDSCH or PUSCH using mapping type B. DMRS and PTRS embedded in resources are included. Unit: N/A
+            Trigger: Incremented for each downlink resource block symbol used by PDCCH for scheduling of PDSCH or PUSCH using mapping type B.
+        </documentation>
+        <description>Aggregated number of resource block symbols used by PDCCH for scheduling of PDSCH or PUSCH using mapping type B. DMRS and PTRS embedded in resources are included. Unit: N/A</description>
+        <trigger>Incremented for each downlink resource block symbol used by PDCCH for scheduling of PDSCH or PUSCH using mapping type B.</trigger>
+        <supportedbands>High-band</supportedbands>
+        <supporteddeployments>EN-DC</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>PDCCH Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_mac_rbsym_used_pdcch_type_b</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymUsedPuschTypeA"/>
+        <documentation>
+            Description: Aggregated number of resource block symbols used for PUSCH mapping type A during complete ROP.
+DMRS and PTRS embedded in PUSCH resources are included.
+Unit: N/A
+            Trigger: Incremented for each downlink resource block symbol used for PUSCH mapping type A.
+        </documentation>
+        <description>Aggregated number of resource block symbols used for PUSCH mapping type A during complete ROP.
+DMRS and PTRS embedded in PUSCH resources are included.
+Unit: N/A</description>
+        <trigger>Incremented for each downlink resource block symbol used for PUSCH mapping type A.</trigger>
+        <supportedbands>Low-band, Mid-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>PUSCH Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_mac_rbsym_used_pusch_type_a</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacVolUl"/>
+        <documentation>
+            Description: Data volume in MAC SDUs successfully received in uplink. Unit: bytes
+            Trigger: Stepped when data is successfully received from DRBs and SRBs when cell is used as PCell or SCell.
+        </documentation>
+        <description>Data volume in MAC SDUs successfully received in uplink. Unit: bytes</description>
+        <trigger>Stepped when data is successfully received from DRBs and SRBs when cell is used as PCell or SCell.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Uplink Volume</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_mac_vol_ul</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacTimeUlResUe"/>
+        <documentation>
+            Description: Transfer time of restricted uplink data volume.
+Unit: 125 microseconds
+            Trigger: Stepped from reception of first MAC PDU in a burst until reception of second last slot.
+        </documentation>
+        <description>Transfer time of restricted uplink data volume.
+Unit: 125 microseconds</description>
+        <trigger>Stepped from reception of first MAC PDU in a burst until reception of second last slot.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Uplink Throughput</categoryscenario>
+        <pmeventname>DuPerUeTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_ue_mac_time_ul_res_ue</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsPdschSchedActivity"/>
+        <documentation>
+            Description: Total duration of slots with downlink PDSCH scheduling activity. Unit: 125 us
+            Trigger: Stepped for each slot where there is at least one SRB or DRB PDSCH scheduling activity. Other scheduling activities are excluded.
+        </documentation>
+        <description>Total duration of slots with downlink PDSCH scheduling activity. Unit: 125 us</description>
+        <trigger>Stepped for each slot where there is at least one SRB or DRB PDSCH scheduling activity. Other scheduling activities are excluded.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>PDSCH Integrity, Scheduling</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_pdsch_sched_activity</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsActiveUeUlSamp"/>
+        <documentation>
+            Description: Total number of uplink samples made for pmEbsActiveUeUlSum.
+Unit: N/A
+            Trigger: One sample is taken each slot, regardless if UE is active or not.
+        </documentation>
+        <description>Total number of uplink samples made for pmEbsActiveUeUlSum.
+Unit: N/A</description>
+        <trigger>One sample is taken each slot, regardless if UE is active or not.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>Active UE</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_active_ue_ul_samp</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsActiveUeDlSamp"/>
+        <documentation>
+            Description: Total number of downlink samples made for pmEbsActiveUeDlSum.
+Unit: N/A
+            Trigger: One sample is taken each slot, regardless if UE is active or not.
+        </documentation>
+        <description>Total number of downlink samples made for pmEbsActiveUeDlSum.
+Unit: N/A</description>
+        <trigger>One sample is taken each slot, regardless if UE is active or not.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>Active UE</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_active_ue_dl_samp</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacLatTimeDlNoDrxSyncQos"/>
+        <documentation>
+            Description: Aggregated time for downlink MAC latency measurement for each QoS without DRX impact and out-of-sync impact. DL MAC latency measures MAC scheduling latency between reception of packet in an empty DL buffer and transmission of first packet.
+Unit: 125 microseconds
+            Trigger: Stepped at DL MAC latency when the following conditions apply:
+  - UE is in DRX_ACTIVE state and in UL in-sync state.
+  - First packet is received in empty DL buffer.
+In case of carrier aggregation, first packet transmission can be in PCell or SCell. Counter is accumulated in PCell.
+        </documentation>
+        <description>Aggregated time for downlink MAC latency measurement for each QoS without DRX impact and out-of-sync impact. DL MAC latency measures MAC scheduling latency between reception of packet in an empty DL buffer and transmission of first packet.
+Unit: 125 microseconds</description>
+        <trigger>Stepped at DL MAC latency when the following conditions apply:
+  - UE is in DRX_ACTIVE state and in UL in-sync state.
+  - First packet is received in empty DL buffer.
+In case of carrier aggregation, first packet transmission can be in PCell or SCell. Counter is accumulated in PCell.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Latency and Delay, Discontinuous Reception</categoryscenario>
+        <pmeventname>DuPerCellQosTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <pdf>256</pdf>
+                <compressed>true</compressed>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_qos_mac_lat_time_dl_drxactive_insync</pref>
+                    <pref>qos_value</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsActiveUeDlMax"/>
+        <documentation>
+            Description: Peak number of active UEs that have DRB data in UE dedicated downlink buffer.
+Value is maximum of a set of samples, where following conditions apply:
+  - Throughout measurement period, each sample is an average of active UEs. Rounding method can cause counter to show one less than real number of UEs.
+  - Sample is taken every second.
+Unit: N/A
+            Trigger: Set to maximum of all average samples of (ActiveUeSum divided by ActiveUeSamp) made over ROP. Includes only those UEs that have control plane termination in this cell.
+        </documentation>
+        <description>Peak number of active UEs that have DRB data in UE dedicated downlink buffer.
+Value is maximum of a set of samples, where following conditions apply:
+  - Throughout measurement period, each sample is an average of active UEs. Rounding method can cause counter to show one less than real number of UEs.
+  - Sample is taken every second.
+Unit: N/A</description>
+        <trigger>Set to maximum of all average samples of (ActiveUeSum divided by ActiveUeSamp) made over ROP. Includes only those UEs that have control plane termination in this cell.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>Active UE</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>MAX</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <counterstepcondition>
+                <op name="neq">
+                    <pref>per_cell_active_ue_dl_samp</pref>
+                    <nconst>0</nconst>
+                </op>
+            </counterstepcondition>
+            <stepexpression>
+                <set type="max">
+                    <op name="divide">
+                        <pref>per_cell_active_ue_dl_sum</pref>
+                        <pref>per_cell_active_ue_dl_samp</pref>
+                    </op>
+                </set>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsCellDowntimeMan"/>
+        <documentation>
+            Description: Period when cell is disabled because NRCellDU.administrativeState, or another MO the cell depends on, is locked by operator. Incremented only when gNodeB is operational. Unit: seconds
+            Trigger: Stepped each second when conditions are met.        </documentation>
+        <description>Period when cell is disabled because NRCellDU.administrativeState, or another MO the cell depends on, is locked by operator. Incremented only when gNodeB is operational. Unit: seconds</description>
+        <trigger>Stepped each second when conditions are met.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Availability</categoryarea>
+        <categoryscenario>Cell Availability</categoryscenario>
+        <pmeventname>DuPerNRCellDUDowntime</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <counterstepcondition>
+                <op name="eq">
+                    <pref>downtime_type</pref>
+                    <nconst>1</nconst>
+                </op>
+            </counterstepcondition>
+            <stepexpression>
+                <incr>
+                    <nconst>1</nconst>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymUsedPdschTypeABroadcasting"/>
+        <documentation>
+            Description: Aggregated number of resource block symbols used for PDSCH mapping type A broadcasting during complete ROP.
+DMRS and PTRS embedded in PDSCH resources are included.
+Unit: N/A
+            Trigger: Incremented for each downlink resource block symbol used for PDSCH resource element mapping type A broadcasting.
+Counts DL resource block symbols used for Synchronization Signal (SS) PBCH, BCCH, and PCCH including SIBs and Random Access (RA) Msg2.
+        </documentation>
+        <description>Aggregated number of resource block symbols used for PDSCH mapping type A broadcasting during complete ROP.
+DMRS and PTRS embedded in PDSCH resources are included.
+Unit: N/A</description>
+        <trigger>Incremented for each downlink resource block symbol used for PDSCH resource element mapping type A broadcasting.
+Counts DL resource block symbols used for Synchronization Signal (SS) PBCH, BCCH, and PCCH including SIBs and Random Access (RA) Msg2.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>PDSCH Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_mac_rbsym_used_pdsch_type_a_broadcast</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymUsedPdschTypeA"/>
+        <documentation>
+            Description: Aggregated number of resource block symbols used for PDSCH mapping type A during complete ROP.
+DMRS and PTRS embedded in PDSCH resources are included.
+Unit: N/A
+            Trigger: Incremented for each downlink resource block symbol used for PDSCH resource element mapping type A.
+        </documentation>
+        <description>Aggregated number of resource block symbols used for PDSCH mapping type A during complete ROP.
+DMRS and PTRS embedded in PDSCH resources are included.
+Unit: N/A</description>
+        <trigger>Incremented for each downlink resource block symbol used for PDSCH resource element mapping type A.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>PDSCH Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_mac_rbsym_used_pdsch_type_a</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsActiveUeUlMax"/>
+        <documentation>
+            Description: Peak number of active UEs that have DRB or SRB data in UE uplink buffer.
+Value is maximum of a set of samples, where following conditions apply:
+  - Throughout measurement period, each sample is an average of active UEs. Rounding method can cause counter to show one less than real number of UEs.
+  - Sample is taken every second.
+Unit: N/A
+            Trigger: Set to maximum of all average samples of (ActiveUeSum divided by ActiveUeSamp) made over ROP. Includes only those UEs that have control plane termination in this cell.
+        </documentation>
+        <description>Peak number of active UEs that have DRB or SRB data in UE uplink buffer.
+Value is maximum of a set of samples, where following conditions apply:
+  - Throughout measurement period, each sample is an average of active UEs. Rounding method can cause counter to show one less than real number of UEs.
+  - Sample is taken every second.
+Unit: N/A</description>
+        <trigger>Set to maximum of all average samples of (ActiveUeSum divided by ActiveUeSamp) made over ROP. Includes only those UEs that have control plane termination in this cell.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>Active UE</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>MAX</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <counterstepcondition>
+                <op name="neq">
+                    <pref>per_cell_active_ue_ul_samp</pref>
+                    <nconst>0</nconst>
+                </op>
+            </counterstepcondition>
+            <stepexpression>
+                <set type="max">
+                    <op name="divide">
+                        <pref>per_cell_active_ue_ul_sum</pref>
+                        <pref>per_cell_active_ue_ul_samp</pref>
+                    </op>
+                </set>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacLatTimeDlNoDrxSyncSampQos"/>
+        <documentation>
+            Description: Aggregated number of samples for downlink MAC latency measurements for each QoS without DRX and out-of-sync impact. DL MAC latency measures MAC scheduling latency between reception of packet in empty DL buffer and transmission of first packet.
+Unit: N/A
+            Trigger: Stepped at DL MAC latency measurement when the following conditions apply:
+  - UE is in DRX_ACTIVE state and in UL in-sync state.
+  - First packet is received in empty DL buffer.
+In case of carrier aggregation, first packet transmission can be in PCell or SCell. Counter is accumulated in PCell.
+        </documentation>
+        <description>Aggregated number of samples for downlink MAC latency measurements for each QoS without DRX and out-of-sync impact. DL MAC latency measures MAC scheduling latency between reception of packet in empty DL buffer and transmission of first packet.
+Unit: N/A</description>
+        <trigger>Stepped at DL MAC latency measurement when the following conditions apply:
+  - UE is in DRX_ACTIVE state and in UL in-sync state.
+  - First packet is received in empty DL buffer.
+In case of carrier aggregation, first packet transmission can be in PCell or SCell. Counter is accumulated in PCell.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Latency and Delay, Discontinuous Reception</categoryscenario>
+        <pmeventname>DuPerCellQosTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <pdf>256</pdf>
+                <compressed>true</compressed>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_qos_mac_lat_time_dl_drxactive_insync_samp</pref>
+                    <pref>qos_value</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymUsedPdcchTypeA"/>
+        <documentation>
+            Description: Aggregated number of resource block symbols used by PDCCH for scheduling of PDSCH or PUSCH using mapping type A. DMRS and PTRS embedded in resources are included. Unit: N/A
+            Trigger: Incremented for each downlink resource block symbol used by PDCCH for scheduling of PDSCH or PUSCH using mapping type A.
+        </documentation>
+        <description>Aggregated number of resource block symbols used by PDCCH for scheduling of PDSCH or PUSCH using mapping type A. DMRS and PTRS embedded in resources are included. Unit: N/A</description>
+        <trigger>Incremented for each downlink resource block symbol used by PDCCH for scheduling of PDSCH or PUSCH using mapping type A.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>PDCCH Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_mac_rbsym_used_pdcch_type_a</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymUsedPuschTypeB"/>
+        <documentation>
+            Description: Aggregated number of resource block symbols used for PUSCH mapping type B during complete ROP.
+Unit: N/A
+            Trigger: Incremented for each uplink resource block symbol used by PUSCH type B.
+        </documentation>
+        <description>Aggregated number of resource block symbols used for PUSCH mapping type B during complete ROP.
+Unit: N/A</description>
+        <trigger>Incremented for each uplink resource block symbol used by PUSCH type B.</trigger>
+        <supportedbands>High-band</supportedbands>
+        <supporteddeployments>EN-DC</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>PUSCH Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_mac_rbsym_used_pusch_type_b</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsCellDowntimeAuto"/>
+        <documentation>
+            Description: Period when cell is disabled because NRCellDU.serviceStatus is set to OUT_OF_SERVICE. Incremented only when gNodeB is operational. Unit: seconds
+            Trigger: Stepped each second when conditions are met.        </documentation>
+        <description>Period when cell is disabled because NRCellDU.serviceStatus is set to OUT_OF_SERVICE. Incremented only when gNodeB is operational. Unit: seconds</description>
+        <trigger>Stepped each second when conditions are met.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Availability</categoryarea>
+        <categoryscenario>Cell Availability</categoryscenario>
+        <pmeventname>DuPerNRCellDUDowntime</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <counterstepcondition>
+                <op name="eq">
+                    <pref>downtime_type</pref>
+                    <nconst>2</nconst>
+                </op>
+            </counterstepcondition>
+            <stepexpression>
+                <incr>
+                    <nconst>1</nconst>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacVolDlDrbQos"/>
+        <documentation>
+            Description: Aggregated volume of downlink MAC SDUs transmitted for HARQ initial transmission for each QoS. HARQ retransmission is excluded.
+Unit: bytes
+            Trigger: The following cases are excluded:
+- HARQ initial transmission in last slot of burst.
+- HARQ initial transmission in single burst.
+In case of carrier aggregation, all DL MAC SDUs transmitted from PCell and SCell are included. Counter is accumulated in PCell.
+        </documentation>
+        <description>Aggregated volume of downlink MAC SDUs transmitted for HARQ initial transmission for each QoS. HARQ retransmission is excluded.
+Unit: bytes</description>
+        <trigger>The following cases are excluded:
+- HARQ initial transmission in last slot of burst.
+- HARQ initial transmission in single burst.
+In case of carrier aggregation, all DL MAC SDUs transmitted from PCell and SCell are included. Counter is accumulated in PCell.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Downlink Volume</categoryscenario>
+        <pmeventname>DuPerUeRbTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <pdf>256</pdf>
+                <compressed>true</compressed>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_rb_mac_vol_dl_drb</pref>
+                    <pref>qos_value</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacVolUlResUe"/>
+        <documentation>
+            Description: Data volume in MAC SDUs successfully received in uplink as part of a burst while being restricted by air interface. Data volume received in last slot in burst is excluded. Unit: byte
+            Trigger: Stepped when data is successfully received in UL. Data is sent using one of multiple grants on PUSCH needed to empty UE buffer, and it results in a data burst. Volume received in last slot is excluded.
+        </documentation>
+        <description>Data volume in MAC SDUs successfully received in uplink as part of a burst while being restricted by air interface. Data volume received in last slot in burst is excluded. Unit: byte</description>
+        <trigger>Stepped when data is successfully received in UL. Data is sent using one of multiple grants on PUSCH needed to empty UE buffer, and it results in a data burst. Volume received in last slot is excluded.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Uplink Volume</categoryscenario>
+        <pmeventname>DuPerUeTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_ue_mac_vol_ul_res_ue</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymUtilUlDistr"/>
+        <documentation>
+            Description: Distribution of utilization for uplink resource block symbols averaged over 1 second.
+Unit: N/A
+Ranges:
+  Bin[0]: [0..5] %
+  Bin[1]: [6..10] %
+  Bin[2]: [11..15] %
+  Bin[3]: [16..20] %
+  Bin[4]: [21..25] %
+  Bin[5]: [26..30] %
+  Bin[6]: [31..35] %
+  Bin[7]: [36..40] %
+  Bin[8]: [41..45] %
+  Bin[9]: [46..50] %
+  Bin[10]: [51..55] %
+  Bin[11]: [56..60] %
+  Bin[12]: [61..65] %
+  Bin[13]: [66..70] %
+  Bin[14]: [71..75] %
+  Bin[15]: [76..80] %
+  Bin[16]: [81..85] %
+  Bin[17]: [86..90] %
+  Bin[18]: [91..95] %
+  Bin[19]: [96..100] %
+            Trigger: Calculated based on following numbers:
+  - Aggregated number of resource block symbols used for all UL channels in 1 second.
+  - Aggregated number of available UL resource block symbols in 1 second.
+        </documentation>
+        <description>Distribution of utilization for uplink resource block symbols averaged over 1 second.
+Unit: N/A
+Ranges:
+  Bin[0]: [0..5] %
+  Bin[1]: [6..10] %
+  Bin[2]: [11..15] %
+  Bin[3]: [16..20] %
+  Bin[4]: [21..25] %
+  Bin[5]: [26..30] %
+  Bin[6]: [31..35] %
+  Bin[7]: [36..40] %
+  Bin[8]: [41..45] %
+  Bin[9]: [46..50] %
+  Bin[10]: [51..55] %
+  Bin[11]: [56..60] %
+  Bin[12]: [61..65] %
+  Bin[13]: [66..70] %
+  Bin[14]: [71..75] %
+  Bin[15]: [76..80] %
+  Bin[16]: [81..85] %
+  Bin[17]: [86..90] %
+  Bin[18]: [91..95] %
+  Bin[19]: [96..100] %</description>
+        <trigger>Calculated based on following numbers:
+  - Aggregated number of resource block symbols used for all UL channels in 1 second.
+  - Aggregated number of available UL resource block symbols in 1 second.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>RBSym Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <pdfmap>
+                    <lowbin min="0" max="6"/>
+                    <lowbin min="6" max="11"/>
+                    <lowbin min="11" max="16"/>
+                    <lowbin min="16" max="21"/>
+                    <lowbin min="21" max="26"/>
+                    <lowbin min="26" max="31"/>
+                    <lowbin min="31" max="36"/>
+                    <lowbin min="36" max="41"/>
+                    <lowbin min="41" max="46"/>
+                    <lowbin min="46" max="51"/>
+                    <centerbin min="51" max="55"/>
+                    <highbin min="55" max="60"/>
+                    <highbin min="60" max="65"/>
+                    <highbin min="65" max="70"/>
+                    <highbin min="70" max="75"/>
+                    <highbin min="75" max="80"/>
+                    <highbin min="80" max="85"/>
+                    <highbin min="85" max="90"/>
+                    <highbin min="90" max="95"/>
+                    <highbin min="95" max="100"/>
+                </pdfmap>
+            </countertype>
+            <counterstepcondition>
+                <op name="neq">
+                    <pref>per_cell_mac_rbsym_total_avail_ul</pref>
+                    <nconst>0</nconst>
+                </op>
+            </counterstepcondition>
+            <stepexpression>
+                <incr>
+                    <nconst>1</nconst>
+                    <op name="divide">
+                        <op name="multiply">
+                            <nconst>100</nconst>
+                            <op name="plus">
+                                <pref>per_cell_mac_rbsym_used_pusch_type_a</pref>
+                                <pref>per_cell_mac_rbsym_used_pusch_type_b</pref>
+                            </op>
+                        </op>
+                        <pref>per_cell_mac_rbsym_total_avail_ul</pref>
+                    </op>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsActiveUeUlSum"/>
+        <documentation>
+            Description: Number of UE instances considered active in uplink direction. UE is considered to have DRB or SRB data in its buffer.
+Unit: N/A
+            Trigger: Stepped for each active UE instance in each slot.
+        </documentation>
+        <description>Number of UE instances considered active in uplink direction. UE is considered to have DRB or SRB data in its buffer.
+Unit: N/A</description>
+        <trigger>Stepped for each active UE instance in each slot.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>Active UE</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_active_ue_ul_sum</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymUtilDlMax"/>
+        <documentation>
+            Description: Maximum utilization of downlink resource block symbols in ROP sampled every 1 second.
+Unit: N/A
+            Trigger: Calculated based on following numbers:
+  - Aggregated number of resource block symbols used for all DL channels in 1 second.
+  - Aggregated number of available DL resource block symbols in 1 second.
+        </documentation>
+        <description>Maximum utilization of downlink resource block symbols in ROP sampled every 1 second.
+Unit: N/A</description>
+        <trigger>Calculated based on following numbers:
+  - Aggregated number of resource block symbols used for all DL channels in 1 second.
+  - Aggregated number of available DL resource block symbols in 1 second.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>RBSym Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>MAX</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <counterstepcondition>
+                <op name="neq">
+                    <pref>per_cell_mac_rbsym_total_avail_dl</pref>
+                    <nconst>0</nconst>
+                </op>
+            </counterstepcondition>
+            <stepexpression>
+                <set type="max">
+                    <op name="divide">
+                        <op name="multiply">
+                            <nconst>100</nconst>
+                            <op name="plus">
+                                <pref>per_cell_mac_rbsym_used_pdsch_type_a</pref>
+                                <op name="plus">
+                                    <pref>per_cell_mac_rbsym_used_pdcch_type_a</pref>
+                                    <op name="plus">
+                                        <pref>per_cell_mac_rbsym_used_pdcch_type_b</pref>
+                                        <op name="plus">
+                                            <pref>per_cell_mac_rbsym_used_pdsch_type_a_broadcast</pref>
+                                            <pref>per_cell_mac_rbsym_used_csi_rs</pref>
+                                        </op>
+                                    </op>
+                                </op>
+                            </op>
+                        </op>
+                        <pref>per_cell_mac_rbsym_total_avail_dl</pref>
+                    </op>
+                </set>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsRadioRaCbSuccMsg3"/>
+        <documentation>
+            Description: Number of successfully detected random access Msg3 messages for CBRA.
+Unit: messages
+            Trigger: Stepped at each successful detection of Msg3.
+        </documentation>
+        <description>Number of successfully detected random access Msg3 messages for CBRA.
+Unit: messages</description>
+        <trigger>Stepped at each successful detection of Msg3.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Accessibility</categoryarea>
+        <categoryscenario>Random Access</categoryscenario>
+        <pmeventname>DuPerRadioCellMeasurement</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_ra_cb_succ_msg3</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsPdschAvailTime"/>
+        <documentation>
+            Description: Total duration of slots where gNodeB scheduler can schedule on PDSCH. Unit: 125 us
+            Trigger: Stepped for each slot where PDSCH is available, regardless if any UE is scheduled.
+        </documentation>
+        <description>Total duration of slots where gNodeB scheduler can schedule on PDSCH. Unit: 125 us</description>
+        <trigger>Stepped for each slot where PDSCH is available, regardless if any UE is scheduled.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>PDSCH Resources</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_pdsch_avail_time</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymUtilDlDistr"/>
+        <documentation>
+            Description: Distribution of utilization for downlink resource block symbols averaged over 1 second.
+Unit: N/A
+Ranges:
+  Bin[0]: [0..5] %
+  Bin[1]: [6..10] %
+  Bin[2]: [11..15] %
+  Bin[3]: [16..20] %
+  Bin[4]: [21..25] %
+  Bin[5]: [26..30] %
+  Bin[6]: [31..35] %
+  Bin[7]: [36..40] %
+  Bin[8]: [41..45] %
+  Bin[9]: [46..50] %
+  Bin[10]: [51..55] %
+  Bin[11]: [56..60] %
+  Bin[12]: [61..65] %
+  Bin[13]: [66..70] %
+  Bin[14]: [71..75] %
+  Bin[15]: [76..80] %
+  Bin[16]: [81..85] %
+  Bin[17]: [86..90] %
+  Bin[18]: [91..95] %
+  Bin[19]: [96..100] %
+            Trigger: Calculated based on following numbers:
+  - Aggregated number of resource block symbols used for all DL channels in 1 second.
+  - Aggregated number of available DL resource block symbols in 1 second.
+        </documentation>
+        <description>Distribution of utilization for downlink resource block symbols averaged over 1 second.
+Unit: N/A
+Ranges:
+  Bin[0]: [0..5] %
+  Bin[1]: [6..10] %
+  Bin[2]: [11..15] %
+  Bin[3]: [16..20] %
+  Bin[4]: [21..25] %
+  Bin[5]: [26..30] %
+  Bin[6]: [31..35] %
+  Bin[7]: [36..40] %
+  Bin[8]: [41..45] %
+  Bin[9]: [46..50] %
+  Bin[10]: [51..55] %
+  Bin[11]: [56..60] %
+  Bin[12]: [61..65] %
+  Bin[13]: [66..70] %
+  Bin[14]: [71..75] %
+  Bin[15]: [76..80] %
+  Bin[16]: [81..85] %
+  Bin[17]: [86..90] %
+  Bin[18]: [91..95] %
+  Bin[19]: [96..100] %</description>
+        <trigger>Calculated based on following numbers:
+  - Aggregated number of resource block symbols used for all DL channels in 1 second.
+  - Aggregated number of available DL resource block symbols in 1 second.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>RBSym Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <pdfmap>
+                    <lowbin min="0" max="6"/>
+                    <lowbin min="6" max="11"/>
+                    <lowbin min="11" max="16"/>
+                    <lowbin min="16" max="21"/>
+                    <lowbin min="21" max="26"/>
+                    <lowbin min="26" max="31"/>
+                    <lowbin min="31" max="36"/>
+                    <lowbin min="36" max="41"/>
+                    <lowbin min="41" max="46"/>
+                    <lowbin min="46" max="51"/>
+                    <centerbin min="51" max="55"/>
+                    <highbin min="55" max="60"/>
+                    <highbin min="60" max="65"/>
+                    <highbin min="65" max="70"/>
+                    <highbin min="70" max="75"/>
+                    <highbin min="75" max="80"/>
+                    <highbin min="80" max="85"/>
+                    <highbin min="85" max="90"/>
+                    <highbin min="90" max="95"/>
+                    <highbin min="95" max="100"/>
+                </pdfmap>
+            </countertype>
+            <counterstepcondition>
+                <op name="neq">
+                    <pref>per_cell_mac_rbsym_total_avail_dl</pref>
+                    <nconst>0</nconst>
+                </op>
+            </counterstepcondition>
+            <stepexpression>
+                <incr>
+                    <nconst>1</nconst>
+                    <op name="divide">
+                        <op name="multiply">
+                            <nconst>100</nconst>
+                            <op name="plus">
+                                <pref>per_cell_mac_rbsym_used_pdsch_type_a</pref>
+                                <op name="plus">
+                                    <pref>per_cell_mac_rbsym_used_pdcch_type_a</pref>
+                                    <op name="plus">
+                                        <pref>per_cell_mac_rbsym_used_pdcch_type_b</pref>
+                                        <op name="plus">
+                                            <pref>per_cell_mac_rbsym_used_pdsch_type_a_broadcast</pref>
+                                            <pref>per_cell_mac_rbsym_used_csi_rs</pref>
+                                        </op>
+                                    </op>
+                                </op>
+                            </op>
+                        </op>
+                        <pref>per_cell_mac_rbsym_total_avail_dl</pref>
+                    </op>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacVolDl"/>
+        <documentation>
+            Description: Aggregated volume of successfully transmitted downlink MAC PDUs for DRB or SRB using cell as PCell or SCell. Unit: bytes
+            Trigger: All successfully transmitted DL MAC PDUs for DRB or SRB from cell are included. Possible padding bits in DL MAC PDUs are counted. Cell can be PCell or SCell. Msg4 is excluded. Bandwidth-reduced UE instances are excluded.
+        </documentation>
+        <description>Aggregated volume of successfully transmitted downlink MAC PDUs for DRB or SRB using cell as PCell or SCell. Unit: bytes</description>
+        <trigger>All successfully transmitted DL MAC PDUs for DRB or SRB from cell are included. Possible padding bits in DL MAC PDUs are counted. Cell can be PCell or SCell. Msg4 is excluded. Bandwidth-reduced UE instances are excluded.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Downlink Volume</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_mac_vol_dl</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsPuschSchedActivity"/>
+        <documentation>
+            Description: Total duration of slots where at least one MAC SDU is received on PUSCH. Unit: 125 us
+            Trigger: Stepped for each slot where at least one MAC SDU is successfully received.
+        </documentation>
+        <description>Total duration of slots where at least one MAC SDU is received on PUSCH. Unit: 125 us</description>
+        <trigger>Stepped for each slot where at least one MAC SDU is successfully received.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>PUSCH Integrity, Scheduling</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_pusch_sched_activity</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsRadioRaCbAttMsg2"/>
+        <documentation>
+            Description: Number of CBRA Msg2 scheduling attempts.
+Unit: messages
+            Trigger: Stepped at each Msg2 scheduling attempt.
+        </documentation>
+        <description>Number of CBRA Msg2 scheduling attempts.
+Unit: messages</description>
+        <trigger>Stepped at each Msg2 scheduling attempt.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Accessibility</categoryarea>
+        <categoryscenario>Random Access</categoryscenario>
+        <pmeventname>DuPerRadioCellMeasurement</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_ra_cb_att_msg2</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacLatTimeDlDrxSyncQos"/>
+        <documentation>
+            Description: Aggregated time for downlink MAC latency measurement for each QoS with DRX impact but without out-of-sync impact. DL MAC latency measures MAC scheduling latency between reception of packet in empty DL buffer and transmission of first packet.
+Unit: 125 microseconds
+            Trigger: Stepped at DL MAC latency measurement when the following conditions apply:
+  - UE is in DRX_SLEEP state and in UL in-sync state.
+  - First packet is received in empty DL buffer.
+In case of carrier aggregation, first packet transmission can be in PCell or SCell. Counter is accumulated in PCell.
+        </documentation>
+        <description>Aggregated time for downlink MAC latency measurement for each QoS with DRX impact but without out-of-sync impact. DL MAC latency measures MAC scheduling latency between reception of packet in empty DL buffer and transmission of first packet.
+Unit: 125 microseconds</description>
+        <trigger>Stepped at DL MAC latency measurement when the following conditions apply:
+  - UE is in DRX_SLEEP state and in UL in-sync state.
+  - First packet is received in empty DL buffer.
+In case of carrier aggregation, first packet transmission can be in PCell or SCell. Counter is accumulated in PCell.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Latency and Delay, Discontinuous Reception</categoryscenario>
+        <pmeventname>DuPerCellQosTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <pdf>256</pdf>
+                <compressed>true</compressed>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_qos_mac_lat_time_dl_drxinactive_insync</pref>
+                    <pref>qos_value</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacRBSymAvailDl"/>
+        <documentation>
+            Description: Aggregated number of resource block symbols available for downlink transmission during complete ROP.
+Unit: N/A
+            Trigger: Stepped when DL resource block symbols are used in one of the following cases:
+  - Based on configuration.
+  - After considering spectrum sharing.
+  - Regardless of being used for DL transmission or not.
+        </documentation>
+        <description>Aggregated number of resource block symbols available for downlink transmission during complete ROP.
+Unit: N/A</description>
+        <trigger>Stepped when DL resource block symbols are used in one of the following cases:
+  - Based on configuration.
+  - After considering spectrum sharing.
+  - Regardless of being used for DL transmission or not.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>RBSym Resources</categoryscenario>
+        <pmeventname>DuPerCellResourceRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_mac_rbsym_total_avail_dl</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsMacVolDlDrb"/>
+        <documentation>
+            Description: Aggregated volume of downlink MAC SDUs transmitted for HARQ initial transmission for each DRB. HARQ retransmission is excluded. Unit: bytes
+            Trigger: HARQ initial transmission in single-burst and in last slot of burst is excluded. In case of carrier aggregation, all DL MAC SDUs transmitted from PCell and SCell are included.
+        </documentation>
+        <description>Aggregated volume of downlink MAC SDUs transmitted for HARQ initial transmission for each DRB. HARQ retransmission is excluded. Unit: bytes</description>
+        <trigger>HARQ initial transmission in single-burst and in last slot of burst is excluded. In case of carrier aggregation, all DL MAC SDUs transmitted from PCell and SCell are included.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>KPI</categorytype>
+        <categoryarea>Integrity</categoryarea>
+        <categoryscenario>Downlink Volume</categoryscenario>
+        <pmeventname>DuPerUeRbTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_rb_mac_vol_dl_drb</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+
+    <counter>
+        <name format="pmEbsPuschAvailTime"/>
+        <documentation>
+            Description: Total duration of slots where gNodeB scheduler can schedule on PUSCH. Unit: 125 us
+            Trigger: Stepped for each slot where PUSCH is available, regardless if any UE is scheduled.
+        </documentation>
+        <description>Total duration of slots where gNodeB scheduler can schedule on PUSCH. Unit: 125 us</description>
+        <trigger>Stepped for each slot where PUSCH is available, regardless if any UE is scheduled.</trigger>
+        <supportedbands>Low-band, Mid-band, High-band</supportedbands>
+        <supporteddeployments>EN-DC, NR SA</supporteddeployments>
+        <limitationreason></limitationreason>
+        <categorytype>RI</categorytype>
+        <categoryarea>Utilization</categoryarea>
+        <categoryscenario>PUSCH Resources</categoryscenario>
+        <pmeventname>DuPerCellTrafficRep</pmeventname>
+        <mo>NRCellDU</mo>
+        <ossmo>DU_CELL</ossmo>
+        <measurementstatus>USED</measurementstatus>
+        <counterdata>
+            <counteroperation>ACC</counteroperation>
+            <countertype>
+                <single/>
+            </countertype>
+            <stepexpression>
+                <incr>
+                    <pref>per_cell_pusch_avail_time</pref>
+                </incr>
+            </stepexpression>
+        </counterdata>
+    </counter>
+
+</counters>

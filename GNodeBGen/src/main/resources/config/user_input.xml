@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserInputSpecification>
+	<GenericInfo>
+		<runTimePreCookMode>NO</runTimePreCookMode>
+		<isEventParamEnrichment>NO</isEventParamEnrichment>
+		<isTopologyEnrichment>YES</isTopologyEnrichment>
+		<TopologyFileLocation>TOPOLOGY_LOCATION_PATH</TopologyFileLocation>
+		<isCellHandOverRequired>NO</isCellHandOverRequired>
+		<cellHandOverEventIds>3103,3104,3066,3053,3159</cellHandOverEventIds>
+		<isTimeStampUpdate>YES</isTimeStampUpdate>
+		<isStreamingRequired>YES</isStreamingRequired>
+		<requiredEPS>0</requiredEPS>
+		<nodesInNetwork>1</nodesInNetwork>
+		<BatchTimeInHours>1</BatchTimeInHours>
+		<destinationAddress>127.0.0.1:1010</destinationAddress>
+	</GenericInfo>
+	<DataSources>
+		<DataSource name="sim_one">
+			<GeneralInfo>
+				<InputFileLocation>INPUT_LOCATION_PATH</InputFileLocation>
+				<IntermediateLocation>INTERMEDIATE_LOCATION_PATH</IntermediateLocation>
+				<isCompressed>YES</isCompressed>
+				<FileNamePattern>A{REPLACE_START_DATE_TIME}-{REPLACE_END_TIME}_CellTrace_{REPLACE_FDN}</FileNamePattern>
+				<SupportedNetworkFunction>CUCP,DU,CUUP</SupportedNetworkFunction>
+				<OutputTZ>UTC</OutputTZ>
+				<ROPTime>15</ROPTime>
+			</GeneralInfo>
+		</DataSource>
+	</DataSources>
+</UserInputSpecification>

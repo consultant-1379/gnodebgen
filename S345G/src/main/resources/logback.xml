@@ -1,0 +1,48 @@
+<configuration scan="false" scanPeriod="30 seconds">
+
+  <property name="LOGDIR" value="./log" />
+
+  <appender name="S3_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOGDIR}/${S3LOGFILE:-S3}.log</file>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- rollover periodically -->
+      <fileNamePattern>${LOGDIR}/${S3LOGFILE:-S3}.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+          <maxFileSize>50MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+
+      <!-- keep 30 days' worth of history -->
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <!--  <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>-->
+      <pattern>%d{HH:mm:ss.SSS} [%-5level] %msg %n</pattern>
+    </encoder>
+  </appender>
+
+
+  <appender name="INTRUMENTATION-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOGDIR}/${INSTFILE:-S3_Instrumentation}.log</file>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>${LOGDIR}/${INSTFILE:-S3_Instrumentation}.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+      <!-- keep 30 days' worth of history -->
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%d{HH:mm:ss.SSS} %msg %n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="${LOGLEVEL:-debug}">
+    <appender-ref ref="S3_FILE" />
+  </root>
+
+  <logger name="Instrumentation" level="INFO" additivity="false">
+    <appender-ref ref="INTRUMENTATION-FILE"/>
+  </logger>
+</configuration>
